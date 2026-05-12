@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Rootless Computing</title>
+<meta name="description" content="Frequently asked questions about Rootless Computing, including the sharp comparisons to web3, JAMstack, and local-first.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><span class="brand-text">Rootless Computing</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="./">Manifesto</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="principles.html">Principles</a>
+    <a href="faq.html" aria-current="page">FAQ</a>
+    <a href="examples.html">Examples</a>
+    <a href="adjacent-work.html">Adjacent work</a>
+    <a href="history.html">History</a>
+    <a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">GitHub</a>
+  </nav>
+  <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">◐</button>
+</div></header>
+
+<main id="main" class="wrap"><article>
+
+<h1>FAQ</h1>
+
+<p>Honest answers to the obvious questions. Where something is genuinely unsolved, this page says so.</p>
+
+<h2 id="static-extra-steps">Isn't this just static sites with extra steps?</h2>
+<p>Static sites are the ancestor, and the family resemblance is real. The difference is what runs after the page loads. A static site renders HTML and stops. A rootless app loads a static artifact and then does meaningful work in the browser — analytical queries against a baked database, ZK proof generation, CRDT merge against other peers, fiducial-aligned compass math. The deployment story is shared; the runtime is not.</p>
+
+<h2 id="vs-local-first">How is this different from local-first software?</h2>
+<p>Rootless and local-first are siblings, and the Ink &amp; Switch <a href="https://www.inkandswitch.com/local-first/" rel="noopener">2019 essay</a> is required reading. Local-first centers <em>data ownership</em> and <em>sync</em>: your data lives on your device, and synchronization is a property of the data, not of a service. Rootless centers <em>deployment</em> and <em>coordination</em>: the application has no origin, and peers coordinate without a host.</p>
+<p>In practice they are highly compatible. Most rootless apps are local-first by necessity (no server means no remote database). But you can build local-first apps that depend on a sync service (still local-first, not rootless), and you can build rootless apps that hold no user data at all (still rootless, not really local-first).</p>
+
+<h2 id="vs-jamstack">How is this different from JAMstack?</h2>
+<p>JAMstack names a build-and-deploy pattern: ship static markup, hydrate with JavaScript, call APIs at runtime. The "A" in JAM is <em>API</em> — JAMstack apps are typically thin clients to managed backends. Rootless apps inherit JAMstack's static-first deployment story but reject the runtime-API assumption. There is no API to call because there is no server to host it. Coordination, when needed, happens between peers.</p>
+
+<h2 id="vs-web3">How is this different from web3 / dApps?</h2>
+<p>This is the comparison that matters most, because surface vocabulary is similar and the underlying philosophy is opposed.</p>
+<p>Web3 / dApps require <em>global consensus</em>: every node agrees on the ordered history. This is expensive, slow, and necessary only if you are minting scarce digital assets. Rootless apps require <em>no consensus</em> — they accept that two forks may diverge and that two participants may see different views. Rootless apps have no native token, no chain, no gas, no validator set, no canonical state.</p>
+<p>Rootless borrows from web3's better ideas: zero-knowledge proofs for eligibility, nullifiers for one-action-per-user, content addressing for artifacts. It refuses the framing that <em>every</em> coordination problem is a ledger problem. Most are not.</p>
+
+<h2 id="auth">What about authentication?</h2>
+<p>There are three honest answers:</p>
+<ol>
+  <li>Many rootless apps need no authentication at all. A retro board, a poll, a stretch class — the participants do not need accounts. They need an invitation link.</li>
+  <li>When eligibility matters, prefer cryptographic proofs over identity. A Semaphore-style group membership proof says "this person is in the allowed set" without saying <em>which</em> person, and pairs with a nullifier to enforce one-action-per-member.</li>
+  <li>When stable identity is required, lean on existing identity providers via OAuth — but treat the resulting token as a peer-to-peer credential, not a server session. The provider becomes a trusted issuer, not a coordinator.</li>
+</ol>
+
+<h2 id="abuse">What about abuse, moderation, and spam?</h2>
+<p>This is the hardest open problem in rootless computing, and pretending otherwise would be dishonest.</p>
+<p>Without a coordinator there is no central place to ban a user, take down content, or rate-limit a flood. Several partial answers exist: cryptographic eligibility narrows who can participate; nullifiers cap how often; local client-side filters let each peer choose what to see; physical anchors limit participation to people in a room. None of these are sufficient on their own, and none scale to "anonymous strangers on the public internet."</p>
+<p>The honest framing: rootless apps work well for <em>bounded</em> groups — a conference, a team, a class, a room — and degrade for <em>unbounded</em> ones. This is a real limit of the architecture, not a defect of this manifesto.</p>
+
+<h2 id="scale">Does this scale?</h2>
+<p>For the cases rootless apps target, yes — sometimes spectacularly. A baked artifact serves a million users for the cost of serving one. Peer coordination scales with the number of people in a room, not the number of users worldwide. The user's device is the database, so the database scales by the number of devices.</p>
+<p>It does not scale to <em>global</em>, <em>strongly consistent</em>, <em>coordinator-driven</em> workloads. That is what hosted services are for. Use those when you need them.</p>
+
+<h2 id="why-new-term">Why coin a new term instead of using existing vocabulary?</h2>
+<p>Because the existing terms are each pointing at one face of the thing.</p>
+<ul>
+  <li>"Static site" describes the deployment but underdescribes the runtime.</li>
+  <li>"Local-first" describes the data ownership but is silent on deployment topology.</li>
+  <li>"P2P" describes the transport but is silent on artifact distribution.</li>
+  <li>"Serverless" describes a billing model and is actively misleading here.</li>
+  <li>"Decentralized" has been overloaded by crypto and now connotes ledger consensus.</li>
+</ul>
+<p><em>Rootless computing</em> names the intersection. A rootless app is static-deployed, local-first in data, P2P in coordination, server-free in dependency, and decentralized in the older sense (no privileged coordinator). The single term lets people find each other.</p>
+
+<h2 id="rootless-containers">What does this have to do with rootless containers?</h2>
+<p>The name is borrowed deliberately. In containers, <em>rootless</em> means "runs without a privileged root daemon" — no <code>dockerd</code> running as root, no system-level coordinator required. The analogy is tight: rootless containers remove the privileged daemon; rootless apps remove the privileged server. In both cases the unprivileged version turns out to be enough for most real-world cases, and the privileged version was historical accident more than necessity.</p>
+
+</article></main>
+
+<footer class="site-footer"><div class="wrap">
+  <p><span class="mark" aria-hidden="true">✦</span> Rootless Computing &middot; v0.1 &middot; 2026-05-12</p>
+  <p>Prose under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>. Code under <a href="https://opensource.org/license/mit/" rel="license noopener">MIT</a>.</p>
+  <p><a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">Source on GitHub</a> &middot; <a href="https://badita.org" rel="author noopener">Author</a></p>
+</div></footer>
+
+<script>
+(function(){var k='rc-theme',r=document.documentElement,s=null;try{s=localStorage.getItem(k)}catch(e){}if(s==='light'||s==='dark')r.setAttribute('data-theme',s);var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var c=r.getAttribute('data-theme');if(!c){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;c=p?'light':'dark'}var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}});})();
+</script>
+</body>
+</html>

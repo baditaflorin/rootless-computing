@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "The Rootless Computing Manifesto"
+message: "If you cite or build on this work, please use the metadata below."
+type: dataset
+authors:
+  - family-names: "Bădiță"
+    given-names: "Florin"
+    alias: "Vivi"
+    website: "https://badita.org"
+    orcid: ""
+abstract: >
+  Rootless Computing names a category of software with no origin server: the
+  repository is the distribution, the browser is the runtime, the user's machine
+  is the database, peers coordinate directly, and trust (when needed) is proved
+  cryptographically rather than asserted by a host. The manifesto codifies the
+  principles, vocabulary, and prior art.
+keywords:
+  - rootless computing
+  - rootless apps
+  - local-first
+  - peer-to-peer
+  - static sites
+  - bake-time backend
+  - mesh apps
+  - zero-knowledge proofs
+license: CC-BY-4.0
+repository-code: "https://github.com/baditaflorin/rootless-computing"
+url: "https://baditaflorin.github.io/rootless-computing/"
+version: "0.1"
+date-released: "2026-05-12"

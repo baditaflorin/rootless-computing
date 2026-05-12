@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vocabulary — Rootless Computing</title>
+<meta name="description" content="The four-layer vocabulary of rootless computing: Rootless-First, Rootless Apps, Rootless Runtime, and the Manifesto.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><span class="brand-text">Rootless Computing</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="./">Manifesto</a>
+    <a href="vocabulary.html" aria-current="page">Vocabulary</a>
+    <a href="principles.html">Principles</a>
+    <a href="faq.html">FAQ</a>
+    <a href="examples.html">Examples</a>
+    <a href="adjacent-work.html">Adjacent work</a>
+    <a href="history.html">History</a>
+    <a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">GitHub</a>
+  </nav>
+  <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">◐</button>
+</div></header>
+
+<main id="main" class="wrap">
+<article>
+
+<h1>Vocabulary</h1>
+
+<p>Rootless computing is a stack of four ideas. Each names a distinct layer; conflating them muddies all four.</p>
+
+<h2 id="rootless-first">1. Rootless-First</h2>
+<p><strong>Gloss:</strong> The design stance. A sibling to <em>local-first</em> and <em>offline-first</em>.</p>
+<p>Rootless-first means starting from the assumption that no server exists, and treating any server you eventually add as a progressive enhancement rather than a foundation. The default execution context is a browser holding a static artifact. Coordination, persistence, and verification are designed to work in that context; a relay or storage backend may improve the experience but cannot be load-bearing.</p>
+<p><strong>Example:</strong> <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">anon-conf-poll</a> designs voting around CRDT merge and ZK proofs first; the optional signaling relay only accelerates peer discovery and can be replaced by a QR code.</p>
+<p><strong>Not to be confused with:</strong></p>
+<ul>
+  <li><em>Offline-first</em> — which assumes a server exists but might be unreachable.</li>
+  <li><em>Local-first</em> — which centers data ownership and sync, but typically still imagines a sync server in the loop.</li>
+</ul>
+
+<h2 id="rootless-apps">2. Rootless Apps</h2>
+<p><strong>Gloss:</strong> The category. The things you can point at and say "this one."</p>
+<p>A rootless app is an application with no origin server, no canonical instance, and no privileged runtime coordinator. Every browser that loads it is an equal peer. Every fork of the repository, deployed to any host (or no host), is an equally legitimate copy. Liveness of the app does not depend on the liveness of the author.</p>
+<p><strong>Example:</strong> <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">anon-conf-poll</a> is a rootless app. If the author deletes the GitHub account, every existing fork still runs.</p>
+<p><strong>Not to be confused with:</strong></p>
+<ul>
+  <li>A <em>static site</em> — which is a rootless app's ancestor but typically does no runtime computation beyond rendering.</li>
+  <li>A <em>self-hosted app</em> — which still has an origin server; you just happen to run it.</li>
+</ul>
+
+<h2 id="rootless-runtime">3. Rootless Runtime</h2>
+<p><strong>Gloss:</strong> The technical architecture. The execution topology of a rootless app.</p>
+<p>The rootless runtime is the set of pieces that make rootless apps possible: browser-resident compute (WASM, DuckDB-WASM, ZK circuits), baked artifacts produced at CI time (the Bake-Time Backend pattern), peer-to-peer transport (WebRTC + signaling), local-first storage (IndexedDB, OPFS), and — for situated apps — physical-world anchors like AprilTags. A given rootless app uses some subset of these.</p>
+<p><strong>Example:</strong> <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">anon-conf-poll</a>'s runtime is: Pages-served artifact + DuckDB-WASM for tallying + Yjs CRDT for sync + Semaphore-style ZK proofs for eligibility + IndexedDB for local persistence.</p>
+<p><strong>Not to be confused with:</strong></p>
+<ul>
+  <li>The <em>runtime</em> of a hosted app (which means "the server process"). Here, the runtime is distributed across all participating browsers.</li>
+</ul>
+
+<h2 id="manifesto">4. The Rootless Computing Manifesto</h2>
+<p><strong>Gloss:</strong> The foundational document.</p>
+<p>The manifesto is a versioned, dated, citable text that codifies the principles distinguishing rootless apps from their neighbors. It is itself a rootless artifact: published in a git repository, served as a static page, forkable into an alternative manifesto if you disagree with this one. It is the answer to "what are we actually claiming?"</p>
+<p><strong>Example:</strong> The page at <a href="./">./</a> — v0.1, dated 2026-05-12.</p>
+<p><strong>Not to be confused with:</strong></p>
+<ul>
+  <li>A <em>spec</em> — the manifesto does not normatively define protocols. It defines a category.</li>
+  <li>A <em>license</em> — it does not grant or restrict rights.</li>
+</ul>
+
+<h2 id="how-they-relate">How the layers relate</h2>
+<pre><code>                 ┌──────────────────────────────────────┐
+                 │  The Rootless Computing Manifesto    │  ← the document
+                 │  (codifies the principles below)     │
+                 └──────────────────────────────────────┘
+                                  │ defines
+                                  ▼
+                 ┌──────────────────────────────────────┐
+                 │  Rootless-First (design stance)      │  ← the philosophy
+                 └──────────────────────────────────────┘
+                                  │ produces
+                                  ▼
+                 ┌──────────────────────────────────────┐
+                 │  Rootless Apps (the category)        │  ← the things
+                 └──────────────────────────────────────┘
+                                  │ run on
+                                  ▼
+                 ┌──────────────────────────────────────┐
+                 │  Rootless Runtime (the architecture) │  ← the how
+                 └──────────────────────────────────────┘</code></pre>
+
+<h2 id="adjacent">Composition with adjacent vocabulary</h2>
+
+<table>
+  <thead><tr><th>Adjacent term</th><th>What it names</th><th>Relationship to rootless</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pages-Native</strong></td><td>Deployment axis — <em>where</em> the app lives.</td><td>Most rootless apps are Pages-Native, but a rootless app could also be distributed as an IPFS bundle or a downloadable zip.</td></tr>
+    <tr><td><strong>Bake-Time Backend</strong></td><td>Resolution axis — <em>when</em> "server work" happens.</td><td>Most rootless apps use BTB because it eliminates the need for runtime APIs.</td></tr>
+    <tr><td><strong>Mesh Apps / Situated Mesh</strong></td><td>Runtime topology with WebRTC + physical anchors.</td><td>A common runtime <em>for</em> rootless apps, especially situated ones.</td></tr>
+  </tbody>
+</table>
+
+<p>A rootless app is typically Pages-Native, often uses a Bake-Time Backend, and frequently has a Mesh runtime — but none of those is required. Rootlessness is the principle; the others are implementation choices.</p>
+
+</article>
+</main>
+
+<footer class="site-footer"><div class="wrap">
+  <p><span class="mark" aria-hidden="true">✦</span> Rootless Computing &middot; v0.1 &middot; 2026-05-12</p>
+  <p>Prose under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>. Code under <a href="https://opensource.org/license/mit/" rel="license noopener">MIT</a>.</p>
+  <p><a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">Source on GitHub</a> &middot; <a href="https://badita.org" rel="author noopener">Author</a></p>
+</div></footer>
+
+<script>
+(function(){var k='rc-theme',r=document.documentElement,s=null;try{s=localStorage.getItem(k)}catch(e){}if(s==='light'||s==='dark')r.setAttribute('data-theme',s);var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var c=r.getAttribute('data-theme');if(!c){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;c=p?'light':'dark'}var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}});})();
+</script>
+</body>
+</html>

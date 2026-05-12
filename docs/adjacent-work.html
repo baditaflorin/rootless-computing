@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adjacent work — Rootless Computing</title>
+<meta name="description" content="Honest comparison of Rootless Computing to local-first, JAMstack, IndieWeb, Solid, IPFS, serverless, rootless containers, and the peer-to-peer web.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><span class="brand-text">Rootless Computing</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="./">Manifesto</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="principles.html">Principles</a>
+    <a href="faq.html">FAQ</a>
+    <a href="examples.html">Examples</a>
+    <a href="adjacent-work.html" aria-current="page">Adjacent work</a>
+    <a href="history.html">History</a>
+    <a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">GitHub</a>
+  </nav>
+  <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">◐</button>
+</div></header>
+
+<main id="main" class="wrap"><article>
+
+<h1>Adjacent work</h1>
+
+<p>Rootless computing is not the first attempt to name "applications that don't need a server in the middle." It is the most recent, and it sits at a specific intersection that the prior names individually miss. This page summarizes the prior work honestly and locates rootless relative to it.</p>
+
+<h2 id="local-first">Local-first software</h2>
+<p><strong>Summary.</strong> The Ink &amp; Switch essay "Local-First Software: You own your data, in spite of the cloud" (<a href="https://www.inkandswitch.com/local-first/" rel="noopener">inkandswitch.com/local-first</a>, 2019) names seven ideals: no spinners, multi-device sync, offline-by-default, collaboration without a central server, longevity beyond any vendor, security and privacy by default, and user-owned data. The essay frames CRDTs as the enabling technology.</p>
+<p><strong>Overlap and difference.</strong> Rootless computing inherits local-first's user-ownership ethic almost completely. The difference is the framing axis: local-first foregrounds <em>data</em>; rootless foregrounds <em>deployment and coordination</em>. Many apps are both. Some local-first apps still rely on a sync service and so are not rootless. Some rootless apps hold no user data and so are not meaningfully local-first.</p>
+
+<h2 id="jamstack">JAMstack</h2>
+<p><strong>Summary.</strong> A deployment pattern coined by Mathias Biilmann in 2015: JavaScript + APIs + Markup, served from CDN. The site itself is static; dynamic features come from runtime API calls.</p>
+<p><strong>Overlap and difference.</strong> Rootless apps share JAMstack's static-first instinct and benefit from the same CDN economics. Rootless rejects the "A" — the runtime API call to a managed backend. Where JAMstack defers backend work to runtime APIs, rootless defers it to <em>build-time bakes</em> and <em>peer coordination</em>.</p>
+
+<h2 id="indieweb">The IndieWeb</h2>
+<p><strong>Summary.</strong> A movement and set of conventions (<a href="https://indieweb.org" rel="noopener">indieweb.org</a>) advocating personal ownership of one's content via self-hosted sites, with interop protocols (Webmention, Microformats, IndieAuth) for federation.</p>
+<p><strong>Overlap and difference.</strong> IndieWeb shares rootless's anti-platform ethic but assumes you <em>do</em> run a server (your own). Rootless removes the server entirely. The two are complementary: an IndieWeb site can host a rootless app, and a rootless app can syndicate via IndieWeb protocols.</p>
+
+<h2 id="solid">Solid (Social Linked Data)</h2>
+<p><strong>Summary.</strong> Tim Berners-Lee's project (<a href="https://solidproject.org" rel="noopener">solidproject.org</a>) separating apps from data: users own Pods (personal data stores), apps request access. The Pod is the user's data layer; apps are stateless clients.</p>
+<p><strong>Overlap and difference.</strong> Solid and rootless both want user-owned data and app-independence, but Solid still presumes a Pod-host (yours or your provider's) acting as the data coordinator. Rootless puts the data on the device itself — no Pod, no host, no auth dance.</p>
+
+<h2 id="ipfs">IPFS, Hypercore, dat</h2>
+<p><strong>Summary.</strong> Content-addressed peer-to-peer storage protocols. IPFS (Protocol Labs), Hypercore/Hyperdrive (Holepunch, formerly Dat Project), Beaker Browser (now retired). Files are addressed by hash; any peer that has them can serve them.</p>
+<p><strong>Overlap and difference.</strong> These protocols would be natural distribution substrates for rootless apps. The reason most rootless apps today use HTTPS + GitHub Pages instead of IPFS is operational, not philosophical: browser support, gateway reliability, and discoverability are all weaker for content-addressed networks today. A future where IPFS or successors carry rootless artifacts directly is plausible and welcome.</p>
+
+<h2 id="serverless">Serverless / edge functions</h2>
+<p><strong>Summary.</strong> Cloud-vendor execution models (AWS Lambda, Cloudflare Workers, Vercel Functions) that run server code on demand without managing servers. Billing is per-invocation.</p>
+<p><strong>Overlap and difference.</strong> "Serverless" is a misnomer — the servers are very much there, just rented finely. Rootless apps share none of the architectural pattern; they share only the absence of a long-running owned process. A rootless app may use an edge function for a single narrow purpose (a signaling shim, an OAuth callback handler) without ceasing to be rootless, as long as the function is replaceable and not load-bearing.</p>
+
+<h2 id="p2p-web">Peer-to-peer web / Beaker Browser</h2>
+<p><strong>Summary.</strong> Beaker Browser (<a href="https://beakerbrowser.com" rel="noopener">beakerbrowser.com</a>, 2016–2022, retired) was a Chromium fork that natively spoke the dat protocol, letting users publish sites peer-to-peer with no server. The project ended but the ideas continue under Hypercore.</p>
+<p><strong>Overlap and difference.</strong> Beaker was probably the closest prior approximation of rootless apps as a category. The conceptual debt is large. The reason rootless is a current term and not a continuation of Beaker's vocabulary is that browsers in 2026 have absorbed enough P2P primitives (WebRTC, WebTransport, OPFS) that a custom browser is no longer required. Beaker imagined a different transport; rootless settles for the transport browsers already ship.</p>
+
+<h2 id="rootless-containers">Rootless containers (etymological ancestor)</h2>
+<p><strong>Summary.</strong> Container runtimes (<code>podman</code>, rootless Docker, <code>runc</code> in user mode) that operate without a privileged root daemon. The user's UID owns the containers; no system-level coordinator is required.</p>
+<p><strong>Overlap and difference.</strong> This is where the name comes from. The analogy is deliberate: rootless containers removed the privileged daemon from container execution and discovered that the daemon was mostly historical. Rootless computing removes the privileged server from application execution and bets the same is true.</p>
+
+<h2 id="where-it-sits">Where rootless sits</h2>
+<pre><code>                         user ownership of data
+                                  ▲
+                                  │
+                       Local-first│  ●
+                                  │
+                                  │       ●  Rootless
+                                  │
+                    Solid  ●      │
+                                  │
+                IPFS/dat  ●       │       ●  Beaker
+                                  │
+                                  │
+                       JAMstack   │
+                            ●     │     ●  IndieWeb
+                                  │
+                  Serverless  ●   │
+                                  │
+                                  └──────────────────────►
+                                       independence from
+                                       privileged coordinator</code></pre>
+
+<p>The point of locating rootless on this map is not to claim it dominates the others. It is to show that no prior name occupies the upper-right corner — high data-ownership <em>and</em> high coordinator-independence <em>and</em> low operational burden — which is the corner most of these apps actually live in.</p>
+
+</article></main>
+
+<footer class="site-footer"><div class="wrap">
+  <p><span class="mark" aria-hidden="true">✦</span> Rootless Computing &middot; v0.1 &middot; 2026-05-12</p>
+  <p>Prose under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>. Code under <a href="https://opensource.org/license/mit/" rel="license noopener">MIT</a>.</p>
+  <p><a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">Source on GitHub</a> &middot; <a href="https://badita.org" rel="author noopener">Author</a></p>
+</div></footer>
+
+<script>
+(function(){var k='rc-theme',r=document.documentElement,s=null;try{s=localStorage.getItem(k)}catch(e){}if(s==='light'||s==='dark')r.setAttribute('data-theme',s);var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var c=r.getAttribute('data-theme');if(!c){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;c=p?'light':'dark'}var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}});})();
+</script>
+</body>
+</html>

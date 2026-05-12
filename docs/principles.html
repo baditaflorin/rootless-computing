@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Principles, expanded — Rootless Computing</title>
+<meta name="description" content="Each principle of the Rootless Computing Manifesto, with rationale and prior art.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><span class="brand-text">Rootless Computing</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="./">Manifesto</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="principles.html" aria-current="page">Principles</a>
+    <a href="faq.html">FAQ</a>
+    <a href="examples.html">Examples</a>
+    <a href="adjacent-work.html">Adjacent work</a>
+    <a href="history.html">History</a>
+    <a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">GitHub</a>
+  </nav>
+  <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">◐</button>
+</div></header>
+
+<main id="main" class="wrap"><article>
+
+<h1>Principles, expanded</h1>
+
+<p>The <a href="./">manifesto</a> states the principles tersely. This page expands each one with rationale, prior art, and concrete consequences. The numbering matches the manifesto exactly.</p>
+
+<h2 id="p1">1. Rootless apps have no origin server</h2>
+<p>A rootless app has no host you can subpoena, sunset, or starve. There is no "production" deployment that is more real than your fork. The application's identity is the artifact, not the URL.</p>
+<p>The consequence at the architectural level: there is no privileged client. Every browser holds the entire app and runs the same code. The author cannot ship a feature flag that only their copy honors, because there is no central authority to consult.</p>
+<p><strong>Prior art:</strong> This generalizes the static-site instinct and absorbs lessons from local-first software and Beaker Browser's "dat" model. Rootless tightens the constraint: not just <em>runs without a server</em>, but <em>has no privileged coordinator anywhere</em>.</p>
+
+<h2 id="p2">2. The repository is the distribution</h2>
+<p>The unit of shipping is a git repository whose contents render to a working app when served. There is no separate "release pipeline" producing artifacts that the repo does not contain. Cloning the repo is sufficient to run the app; visiting any fork's Pages URL is sufficient to use it.</p>
+<p>This is what makes rootless apps survive their authors. A fork is not a copy of the source — it <em>is</em> the app, in every operational sense.</p>
+
+<h2 id="p3">3. Backend work happens at build time, not request time</h2>
+<p>Anything that looks like a database query, a precomputed aggregation, or a server function should be resolved at CI time and committed as a static file. Browsers then read the file directly.</p>
+<p>This is the <strong>Bake-Time Backend</strong> pattern. The economic argument is overwhelming: a baked artifact serves a million users for the cost of serving one. The architectural argument is stronger still: a baked artifact has no failure mode beyond "the static host is down," which is the same failure mode as the rest of the site.</p>
+<p><strong>Concrete:</strong> If your app needs "the list of valid voter Ethereum addresses," bake the Merkle root at CI time. If your app needs "the top 100 GitHub repos in category X," scrape and bake nightly. If your app needs FTS over 100k documents, bake a DuckDB file and ship it.</p>
+
+<h2 id="p4">4. Peers are the runtime</h2>
+<p>When a rootless app needs synchronous coordination — a cursor, a vote, a presence indicator — it asks the browsers in the room, not a server in a region. WebRTC handles transport; CRDTs handle merge; a small public signaling shim handles introductions.</p>
+<p>The signaling shim is the one place where rootless apps lean on shared infrastructure. This is acceptable because: (a) signaling is stateless and replaceable, (b) the data flowing through it is opaque and short-lived, and (c) for many use cases a QR code or copy-paste link is a sufficient signal channel.</p>
+<p><strong>Prior art:</strong> This descends directly from the WebRTC ecosystem, Yjs and Automerge, and the broader peer-to-peer web tradition. Rootless adds: peer coordination is not a feature, it is the default.</p>
+
+<h2 id="p5">5. Trust is proven, not asserted</h2>
+<p>In a rootless app, eligibility ("this voter is on the allowlist"), uniqueness ("this voter has not voted yet"), and authority ("this command came from a holder of role X") are demonstrated with cryptographic proofs that any other peer can verify locally.</p>
+<p>Zero-knowledge membership proofs (Semaphore-style) and nullifiers are the most common building blocks. The user produces a proof that they belong to a set baked into the artifact; the proof reveals nothing about <em>which</em> member they are, but exposes a unique nullifier that prevents double-action.</p>
+<p><strong>Concrete:</strong> <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">anon-conf-poll</a> proves "this ballot came from a member of the conference attendee list" without identifying which attendee. The nullifier guarantees one ballot per attendee. No server is involved in the verification.</p>
+
+<h2 id="p6">6. The user's machine is the database</h2>
+<p>Persistence in a rootless app lives in the browser. IndexedDB and the Origin Private File System hold documents. DuckDB-WASM runs analytical queries against multi-gigabyte parquet files loaded over HTTP range requests. The File System Access API lets the user export to disk.</p>
+<p>This is liberating and lonely in equal measure. The user owns their data — but they also have to back it up themselves. A rootless app should make export trivial and import obvious.</p>
+
+<h2 id="p7">7. Physical space can carry state <em>(optional, advanced)</em></h2>
+<p>A subset of rootless apps — call them <em>situated</em> — use the physical world as part of their protocol. AprilTags, ArUco markers, or other fiducials let phones agree on geometry, identity, or order without consulting a server. The room becomes a coordination substrate.</p>
+<p>This is the most experimental principle. Many rootless apps will not use physical anchors. But the apps that do — group photo coordination, hands-free retro voting, mesh standup baton-passing — get capabilities that are otherwise impossible without a server.</p>
+
+<h2 id="p8">8. A rootless app must be forkable into existence on someone else's account in under five minutes</h2>
+<p>This is the operational test. Fork the repository, enable Pages on the fork, wait for the action to complete, open the URL — done. If standing up your own instance requires secrets in env vars, DNS configuration, paid service signups, or operator-only knowledge, the app is not rootless. It is a hosted app that happens to publish its source.</p>
+<p>The five-minute budget is not arbitrary. It is roughly the threshold below which a curious user will try it and above which they will not.</p>
+
+<h2 id="p9">9. Rootless does not mean trustless. It means uncoordinated</h2>
+<p>This is the principle most likely to be misread. A rootless app may rely on trusted code (the artifact itself), trusted cryptography (the proofs), trusted hardware (the user's device), and trusted humans (the maintainers who keep the repo honest). What it does not rely on is a <em>trusted coordinator</em> — a single host whose continued cooperation is required for the app to function.</p>
+<p>Removing the coordinator is the design move. Removing trust altogether is a different project, with a much larger blast radius and a much harder threat model. Rootless is not crypto-libertarianism; it is the narrower, more practical observation that <em>most coordination did not actually need a coordinator.</em></p>
+
+<h2 id="p10">10. Progressive enhancement, not regressive purity</h2>
+<p>A rootless app may accept a server. It may benefit from one. It may even encourage you to run one. What it must not do is <em>require</em> one. The acid test: if every server affiliated with the app disappears overnight, does the app keep working with reduced features, or does it stop being an app?</p>
+<p>If reduced features: rootless. If stops being an app: hosted.</p>
+<p>The point of rootlessness is not to refuse infrastructure. It is to refuse <em>dependence</em> on infrastructure.</p>
+
+</article></main>
+
+<footer class="site-footer"><div class="wrap">
+  <p><span class="mark" aria-hidden="true">✦</span> Rootless Computing &middot; v0.1 &middot; 2026-05-12</p>
+  <p>Prose under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>. Code under <a href="https://opensource.org/license/mit/" rel="license noopener">MIT</a>.</p>
+  <p><a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">Source on GitHub</a> &middot; <a href="https://badita.org" rel="author noopener">Author</a></p>
+</div></footer>
+
+<script>
+(function(){var k='rc-theme',r=document.documentElement,s=null;try{s=localStorage.getItem(k)}catch(e){}if(s==='light'||s==='dark')r.setAttribute('data-theme',s);var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var c=r.getAttribute('data-theme');if(!c){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;c=p?'light':'dark'}var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}});})();
+</script>
+</body>
+</html>

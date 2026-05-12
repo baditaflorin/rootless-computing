@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History — Rootless Computing</title>
+<meta name="description" content="Origin story of the term and dated changelog for the Rootless Computing Manifesto.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><span class="brand-text">Rootless Computing</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="./">Manifesto</a>
+    <a href="vocabulary.html">Vocabulary</a>
+    <a href="principles.html">Principles</a>
+    <a href="faq.html">FAQ</a>
+    <a href="examples.html">Examples</a>
+    <a href="adjacent-work.html">Adjacent work</a>
+    <a href="history.html" aria-current="page">History</a>
+    <a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">GitHub</a>
+  </nav>
+  <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">◐</button>
+</div></header>
+
+<main id="main" class="wrap"><article>
+
+<h1>History</h1>
+
+<h2 id="origin">Origin</h2>
+<p>The term <em>rootless computing</em> was coined by <a href="https://badita.org" rel="author noopener">Florin Bădiță (Vivi)</a> in May 2026, during a personal challenge to open-source one application per day for 31 days.</p>
+<p>By around day 10 of that month, the apps shipped — a mix of mesh tools for teams (anonymous polls, retro boards, pomodoro rooms, standup batons), situated apps using AprilTag fiducials, and the immediate predecessor <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">anon-conf-poll</a> — had developed a recognizable shape that the available vocabulary failed to capture cleanly.</p>
+<p>"Static site" undersold the runtime work (DuckDB-WASM analytics, Yjs CRDTs, Semaphore-style ZK proofs). "Serverless" was misleading — those apps were not running on rented compute, they were running in browsers. "P2P" was too broad and historically loaded. "Decentralized" had been captured by the blockchain world.</p>
+<p>A name was needed for <em>apps that assume no origin, treat the repository as the distribution, and let peers do the coordinating</em>. The name was borrowed from rootless containers — runtimes that operate without a privileged root daemon — because the analogy was tight: in both cases, the privileged coordinator turned out to be historical accident rather than necessity.</p>
+<p>The manifesto was written on day 12, while the build-in-public month was still in progress. The 31 apps from that month form the seed of the <a href="examples.html">examples list</a>.</p>
+
+<h2 id="changelog">Changelog</h2>
+
+<h3 id="v0-1">v0.1 — 2026-05-12</h3>
+<p>Initial publication.</p>
+<ul>
+  <li>Manifesto with 10 principles</li>
+  <li>Four-layer vocabulary (Rootless-First, Rootless Apps, Rootless Runtime, the Manifesto itself)</li>
+  <li>FAQ, adjacent-work survey, examples seed</li>
+  <li>Hand-rolled static site under <code>docs/</code>, no build step</li>
+  <li>Pages deploy workflow</li>
+</ul>
+
+<p>Future versions will be dated and listed here as they are published. The manifesto is meant to evolve; corrections, additions, and disputes are tracked as ordinary git history in this repository.</p>
+
+</article></main>
+
+<footer class="site-footer"><div class="wrap">
+  <p><span class="mark" aria-hidden="true">✦</span> Rootless Computing &middot; v0.1 &middot; 2026-05-12</p>
+  <p>Prose under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>. Code under <a href="https://opensource.org/license/mit/" rel="license noopener">MIT</a>.</p>
+  <p><a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">Source on GitHub</a> &middot; <a href="https://badita.org" rel="author noopener">Author</a></p>
+</div></footer>
+
+<script>
+(function(){var k='rc-theme',r=document.documentElement,s=null;try{s=localStorage.getItem(k)}catch(e){}if(s==='light'||s==='dark')r.setAttribute('data-theme',s);var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var c=r.getAttribute('data-theme');if(!c){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;c=p?'light':'dark'}var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}});})();
+</script>
+</body>
+</html>

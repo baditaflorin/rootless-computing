@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rootless Computing Manifesto</title>
+<meta name="description" content="Rootless Computing: a category of software with no origin server. The repository is the distribution; the browser is the runtime; peers coordinate directly.">
+<meta name="author" content="Florin Bădiță">
+<meta property="og:title" content="The Rootless Computing Manifesto">
+<meta property="og:description" content="A category of software with no origin server. The repository is the distribution; the browser is the runtime; peers coordinate directly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://baditaflorin.github.io/rootless-computing/">
+<meta property="og:image" content="https://baditaflorin.github.io/rootless-computing/assets/social-card.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Rootless Computing Manifesto">
+<meta name="twitter:description" content="A category of software with no origin server.">
+<meta name="twitter:image" content="https://baditaflorin.github.io/rootless-computing/assets/social-card.svg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#manifesto">Skip to manifesto</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="mark" aria-hidden="true">✦</span>
+      <span class="brand-text">Rootless Computing</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#manifesto">Manifesto</a>
+      <a href="vocabulary.html">Vocabulary</a>
+      <a href="principles.html">Principles</a>
+      <a href="faq.html">FAQ</a>
+      <a href="examples.html">Examples</a>
+      <a href="adjacent-work.html">Adjacent work</a>
+      <a href="history.html">History</a>
+      <a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">GitHub</a>
+    </nav>
+    <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode" title="Toggle theme">◐</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <p class="eyebrow">A category, a vocabulary, a manifesto.</p>
+  <h1>Rootless Computing</h1>
+  <p class="lede">
+    A class of software with no origin server. The repository is the distribution;
+    the browser is the runtime; the user's machine is the database. Peers coordinate
+    directly. Trust, when needed, is proved rather than asserted.
+  </p>
+  <p class="meta">
+    Version 0.1 &middot; 2026-05-12 &middot;
+    by <a href="https://badita.org" rel="author noopener">Florin Bădiță</a>
+  </p>
+  <p class="cta">
+    <a class="btn" href="#manifesto">Read the manifesto</a>
+    <a class="btn ghost" href="vocabulary.html">See the vocabulary</a>
+  </p>
+</section>
+
+<article id="manifesto">
+
+<h2>The Manifesto</h2>
+
+<p>
+  A rootless application has no origin server. There is no canonical instance,
+  no privileged runtime coordinator, no host you can take offline. The repository
+  that contains the app is also the way the app is distributed. Every browser
+  that loads the page is an equal peer; every fork is an equally legitimate
+  instance. The server, when it exists at all, is a convenience the application
+  can outgrow without changing what it is.
+</p>
+
+<p>This manifesto names that pattern and lays out the principles that keep it coherent.</p>
+
+<h3>Principles</h3>
+
+<ol class="principles">
+  <li id="p1">
+    <strong>Rootless apps have no origin server.</strong>
+    <p>Coordination, when needed, happens between peers — not through a host that can be subpoenaed, sunsetted, or starved of funding. The absence of an origin is not an absence of capability; it is the absence of a single point of capture.</p>
+  </li>
+  <li id="p2">
+    <strong>The repository is the distribution.</strong>
+    <p>Cloning the repo, opening the artifact, or visiting any fork's Pages URL each yield a working application. There is no install step that depends on private infrastructure. If the artifact survives, the app survives.</p>
+  </li>
+  <li id="p3">
+    <strong>Backend work happens at build time, not request time.</strong>
+    <p>What used to be a runtime database query becomes a baked file. What used to be a server function becomes a precomputed table. This is the Bake-Time Backend pattern: CI does the work once so every browser can do it for free, forever.</p>
+  </li>
+  <li id="p4">
+    <strong>Peers are the runtime.</strong>
+    <p>When an app needs coordination — a shared cursor, a vote tally, a live presence indicator — it asks the other browsers in the room, not a server in a region. WebRTC, CRDTs, and small signaling shims are enough for the vast majority of what was once "real-time backend."</p>
+  </li>
+  <li id="p5">
+    <strong>Trust is proven, not asserted.</strong>
+    <p>Eligibility, uniqueness, and authority are demonstrated with cryptographic proofs the receiver can verify locally. A rootless app does not say "trust me, I checked"; it produces an artifact anyone can check. Zero-knowledge membership proofs and nullifiers replace session tokens and admin endpoints.</p>
+  </li>
+  <li id="p6">
+    <strong>The user's machine is the database.</strong>
+    <p>Persistence lives in the browser: IndexedDB for documents, DuckDB-WASM for analytical queries, the file system access API for exports. The user owns their data because the data never leaves their machine unless they choose to share it.</p>
+  </li>
+  <li id="p7">
+    <strong>Physical space can carry state.</strong> <em>(optional, advanced)</em>
+    <p>Some rootless apps anchor coordination to the physical world: AprilTags or other fiducials let phones agree on geometry, identity, or order without a network round-trip to a server. The room itself becomes part of the protocol.</p>
+  </li>
+  <li id="p8">
+    <strong>A rootless app must be forkable into existence on someone else's account in under five minutes.</strong>
+    <p>"Fork, enable Pages, done" is the test. If standing up your own instance requires secrets, DNS, paid services, or operator knowledge, the app is not rootless — it is a hosted app with a public repo.</p>
+  </li>
+  <li id="p9">
+    <strong>Rootless does not mean trustless. It means uncoordinated.</strong>
+    <p>A rootless app may rely on trusted code, trusted cryptography, trusted hardware, or trusted humans. What it does not rely on is a trusted coordinator. Removing the coordinator is the design move; removing trust altogether is a different project, and a much harder one.</p>
+  </li>
+  <li id="p10">
+    <strong>Progressive enhancement, not regressive purity.</strong>
+    <p>A rootless app may accept a server — for relays, for storage, for richer presence — but it must not require one. If the server disappears tomorrow, the app keeps working with reduced features rather than ceasing to exist. Purity is a tactic, not a virtue.</p>
+  </li>
+</ol>
+
+<h3>How this came to be</h3>
+
+<p>
+  This term arrived while I was shipping
+  <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">anon-conf-poll</a>,
+  a static, anonymous live-polling app with CRDT sync, zero-knowledge one-vote
+  proofs, and local analytics. It is day 12 of a 31-day month in May 2026 in
+  which I am open-sourcing one app per day in public. By day ten the apps had a
+  shape I could not name with the available vocabulary. "Static site"
+  undersold the runtime compute. "Serverless" was misleading — those apps
+  still have servers. "P2P" was too broad and dragged in twenty years of
+  unrelated baggage. I needed a word for <em>apps that assume no origin, treat
+  the repo as the distribution, and let peers do the coordinating</em>. I
+  borrowed "rootless" from the containers world, where it already means
+  "runs without a privileged root daemon," and the analogy carried.
+</p>
+
+<h3>What rootless computing is not</h3>
+
+<p>
+  It is not <strong>blockchain or web3</strong>. Rootless apps do not need
+  consensus, do not have native tokens, and do not require global agreement on
+  order. Most rootless apps have no chain anywhere.
+</p>
+<p>
+  It is not <strong>serverless</strong>. Serverless is a billing and deployment
+  model — the servers still exist, they are just rented by the millisecond.
+  Rootless removes the server entirely from the application's critical path.
+</p>
+<p>
+  It is not <strong>JAMstack</strong>. JAMstack is a build-and-deploy pattern
+  that produces static artifacts which then call APIs at runtime. Rootless apps
+  may share JAMstack's static-first instinct, but they do not depend on runtime
+  APIs to function.
+</p>
+<p>
+  It is not <strong>just a static site</strong>. Static sites are the ancestor.
+  A rootless app inherits the static site's deployment story and adds
+  browser-resident compute, peer coordination, cryptographic eligibility, and
+  optional physical-world anchoring on top.
+</p>
+
+<h3>Invitation</h3>
+
+<p>
+  This document is version 0.1. It is wrong in places I cannot yet see. If you
+  have built something that fits this shape, please add it to
+  <a href="examples.html">examples</a>. If you think a principle is redundant,
+  weak, or missing, open an issue and argue for the change. If you want to fork
+  the manifesto entirely and run a competing definition, that is also fine —
+  the manifesto is itself a rootless artifact, and there is no canonical
+  instance.
+</p>
+
+</article>
+
+<aside class="badge-block">
+  <h3>Badge</h3>
+  <p>If your repo is a rootless app, embed the badge:</p>
+  <pre><code>[![Rootless App](https://img.shields.io/badge/Rootless%20App-%E2%9C%A6-111?style=flat-square)](https://github.com/baditaflorin/rootless-computing)</code></pre>
+  <p>Or use the SVG directly: <a href="assets/badge.svg">assets/badge.svg</a></p>
+</aside>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>
+      <span class="mark" aria-hidden="true">✦</span>
+      Rootless Computing &middot; v0.1 &middot; 2026-05-12
+    </p>
+    <p>
+      Prose under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>.
+      Code under <a href="https://opensource.org/license/mit/" rel="license noopener">MIT</a>.
+    </p>
+    <p>
+      <a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">Source on GitHub</a> &middot;
+      <a href="https://badita.org" rel="author noopener">Author</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var key = 'rc-theme';
+  var root = document.documentElement;
+  var saved = null;
+  try { saved = localStorage.getItem(key); } catch (e) {}
+  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  var btn = document.getElementById('theme-toggle');
+  if (btn) btn.addEventListener('click', function () {
+    var current = root.getAttribute('data-theme');
+    if (!current) {
+      var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      current = prefersLight ? 'light' : 'dark';
+    }
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(key, next); } catch (e) {}
+  });
+  document.querySelectorAll('article h2[id], article h3[id], article li[id]').forEach(function (el) {
+    var id = el.id; if (!id) return;
+    var a = document.createElement('a');
+    a.className = 'anchor-link';
+    a.href = '#' + id;
+    a.setAttribute('aria-label', 'Link to this section');
+    a.textContent = '#';
+    el.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>
