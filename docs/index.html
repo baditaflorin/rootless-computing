@@ -92,30 +92,34 @@
     <p>What used to be a runtime database query becomes a baked file. What used to be a server function becomes a precomputed table. This is the Bake-Time Backend pattern: CI does the work once so every browser can do it for free, forever.</p>
   </li>
   <li id="p4">
+    <strong>The artifact carries compute, not just content.</strong>
+    <p>WebAssembly lets the browser run native-class engines that used to require servers: full database engines (DuckDB-WASM, SQLite via sql.js, PGlite), media processors (FFmpeg.wasm, libvips, OpenCV.js, MediaPipe), zero-knowledge provers (snarkjs, Halo2 in browser), ML inference runtimes (ONNX Runtime Web, transformers.js), and document tools (Pandoc, PDFium). A rootless app ships these as <code>.wasm</code> files alongside the page, served from the same static host. There is no service to call — the binary loads, executes at near-native speed in the visitor's browser, and produces the same result for every reader.</p>
+  </li>
+  <li id="p5">
     <strong>Peers are the runtime.</strong>
     <p>When an app needs coordination — a shared cursor, a vote tally, a live presence indicator — it asks the other browsers in the room, not a server in a region. WebRTC, CRDTs, and small signaling shims are enough for the vast majority of what was once "real-time backend."</p>
   </li>
-  <li id="p5">
+  <li id="p6">
     <strong>Trust is proven, not asserted.</strong>
     <p>Eligibility, uniqueness, and authority are demonstrated with cryptographic proofs the receiver can verify locally. A rootless app does not say "trust me, I checked"; it produces an artifact anyone can check. Zero-knowledge membership proofs and nullifiers replace session tokens and admin endpoints.</p>
   </li>
-  <li id="p6">
+  <li id="p7">
     <strong>The user's machine is the database.</strong>
     <p>Persistence lives in the browser: IndexedDB for documents, DuckDB-WASM for analytical queries, the file system access API for exports. The user owns their data because the data never leaves their machine unless they choose to share it.</p>
   </li>
-  <li id="p7">
+  <li id="p8">
     <strong>Physical space can carry state.</strong> <em>(optional, advanced)</em>
     <p>Some rootless apps anchor coordination to the physical world: AprilTags or other fiducials let phones agree on geometry, identity, or order without a network round-trip to a server. The room itself becomes part of the protocol.</p>
   </li>
-  <li id="p8">
+  <li id="p9">
     <strong>A rootless app must be forkable into existence on someone else's account in under five minutes.</strong>
     <p>"Fork, enable Pages, done" is the test. If standing up your own instance requires secrets, DNS, paid services, or operator knowledge, the app is not rootless — it is a hosted app with a public repo.</p>
   </li>
-  <li id="p9">
+  <li id="p10">
     <strong>Rootless does not mean trustless. It means uncoordinated.</strong>
     <p>A rootless app may rely on trusted code, trusted cryptography, trusted hardware, or trusted humans. What it does not rely on is a trusted coordinator. Removing the coordinator is the design move; removing trust altogether is a different project, and a much harder one.</p>
   </li>
-  <li id="p10">
+  <li id="p11">
     <strong>Progressive enhancement, not regressive purity.</strong>
     <p>A rootless app may accept a server — for relays, for storage, for richer presence — but it must not require one. If the server disappears tomorrow, the app keeps working with reduced features rather than ceasing to exist. Purity is a tactic, not a virtue.</p>
   </li>

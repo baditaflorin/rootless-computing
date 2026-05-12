@@ -45,33 +45,56 @@
 <p>This is the <strong>Bake-Time Backend</strong> pattern. The economic argument is overwhelming: a baked artifact serves a million users for the cost of serving one. The architectural argument is stronger still: a baked artifact has no failure mode beyond "the static host is down," which is the same failure mode as the rest of the site.</p>
 <p><strong>Concrete:</strong> If your app needs "the list of valid voter Ethereum addresses," bake the Merkle root at CI time. If your app needs "the top 100 GitHub repos in category X," scrape and bake nightly. If your app needs FTS over 100k documents, bake a DuckDB file and ship it.</p>
 
-<h2 id="p4">4. Peers are the runtime</h2>
+<h2 id="p4">4. The artifact carries compute, not just content</h2>
+<p>WebAssembly is the second leg of the rootless runtime, after the static artifact itself. It lets the browser execute the kind of code that used to live behind an API: database engines, media transcoders, cryptographic provers, machine-learning inference, document converters. The <code>.wasm</code> file is shipped from the same static host as the HTML — there is no separate service tier and no separate failure mode.</p>
+
+<p><strong>Capabilities that are routine in 2026, not exotic:</strong></p>
+<ul>
+  <li><strong>Real database engines in the browser.</strong> <a href="https://duckdb.org/docs/api/wasm/overview" rel="noopener">DuckDB-WASM</a> runs analytical SQL against multi-gigabyte parquet files loaded over HTTP range requests. SQLite via <a href="https://sql.js.org" rel="noopener">sql.js</a> and <a href="https://github.com/rhashimoto/wa-sqlite" rel="noopener">wa-sqlite</a> gives a full transactional engine. <a href="https://pglite.dev" rel="noopener">PGlite</a> is Postgres compiled to WASM, running entirely in the page.</li>
+  <li><strong>Media and document tooling.</strong> <a href="https://ffmpegwasm.netlify.app" rel="noopener">FFmpeg.wasm</a> transcodes video client-side. <a href="https://github.com/kleisauke/wasm-vips" rel="noopener">libvips</a>, <a href="https://docs.opencv.org/4.x/d5/d10/tutorial_js_root.html" rel="noopener">OpenCV.js</a>, <a href="https://github.com/strukturag/libheif" rel="noopener">libheif</a>, and <a href="https://developers.google.com/mediapipe" rel="noopener">MediaPipe</a> handle imaging and pose tasks that used to require an upload-and-process pipeline. <a href="https://github.com/hyzyla/pdfium" rel="noopener">PDFium</a> and <a href="https://github.com/ArtifexSoftware/mupdf.js" rel="noopener">mupdf.js</a> render and parse PDFs without a server.</li>
+  <li><strong>Cryptography and zero-knowledge.</strong> <a href="https://github.com/iden3/snarkjs" rel="noopener">snarkjs</a> generates Groth16 and Plonk proofs in the browser; <a href="https://github.com/zcash/halo2" rel="noopener">Halo2</a> and <a href="https://noir-lang.org" rel="noopener">Noir</a> provers compile to WASM. Hashes, signatures, and post-quantum primitives run via WASM ports of audited C/Rust libraries (libsodium, BoringSSL builds, oqs).</li>
+  <li><strong>Machine-learning inference.</strong> <a href="https://onnxruntime.ai/docs/tutorials/web/" rel="noopener">ONNX Runtime Web</a> and TensorFlow.js's WASM backend run model inference locally. <a href="https://huggingface.co/docs/transformers.js" rel="noopener">transformers.js</a> runs quantized transformer models — embeddings, sentiment, summarization — on user input that never leaves the device. <a href="https://github.com/ngxson/wllama" rel="noopener">llama.cpp WASM builds</a> run small chat models on a phone.</li>
+  <li><strong>Compilers and language runtimes in the page.</strong> <a href="https://pyodide.org" rel="noopener">Pyodide</a> brings CPython with NumPy and pandas. <a href="https://github.com/ruby/ruby.wasm" rel="noopener">ruby.wasm</a>, <a href="https://github.com/WordPress/wordpress-playground" rel="noopener">php-wasm</a>, <a href="https://github.com/ceifa/wasmoon" rel="noopener">Lua</a>, and Go all run client-side. <a href="https://github.com/evanw/esbuild" rel="noopener">esbuild-wasm</a> and SWC do TypeScript and JSX transformation in-browser.</li>
+</ul>
+
+<p><strong>Three properties make this load-bearing for rootless apps:</strong></p>
+<ol>
+  <li><strong>Same-origin delivery.</strong> The <code>.wasm</code> binary is a static file in the repository, served by the same Pages instance as the HTML. No second hop, no separate auth, no separate failure mode. If the page loads, the engine loads.</li>
+  <li><strong>Determinism.</strong> WebAssembly's execution model is portable across browsers and architectures (modulo a small set of well-specified float behaviors). The result a peer computes locally is the result every other peer would have computed. This pairs directly with <a href="#p6">principle 6</a> — proofs and votes are only meaningful if every participant agrees on what the program does.</li>
+  <li><strong>Performance.</strong> WASM runs within 20–50% of native for most workloads. With COOP/COEP headers (which GitHub Pages can set via a <code>&lt;meta&gt;</code> setup or via <code>_headers</code> on Cloudflare Pages / Netlify forks), <code>SharedArrayBuffer</code> and multi-threading become available, recovering most of the rest. SIMD instructions are supported in every shipping browser.</li>
+</ol>
+
+<p><strong>Combination with the rest of the manifesto.</strong> This principle compounds with <a href="#p3">principle 3</a> (Bake-Time Backend) to give rootless apps their reach: BTB precomputes what can be precomputed at CI time; WASM lets the browser do everything else. Together they replace the pattern "client calls server function, gets response" with "client loads static file, runs it locally." It compounds with <a href="#p7">principle 7</a> by making it tractable to query the local data store — DuckDB-WASM is the canonical example. And it compounds with <a href="#p6">principle 6</a> by making proof generation a client capability, not a server-mediated one.</p>
+
+<p><strong>What does not yet work well.</strong> WASM is not free. Cold-load times for large engines (FFmpeg.wasm ≈ 25 MB, DuckDB-WASM ≈ 5 MB, transformers.js models ≈ tens to hundreds of MB) matter on mobile and on first visit. WASM cannot use the GPU directly; you need WebGPU for that, and the two are bridged by libraries like ONNX Runtime Web's WebGPU backend. Some libraries that look "WASM-ready" (notably anything depending on <code>pthread</code> without COOP/COEP) need a hosting setup beyond what plain GitHub Pages provides. None of this defeats the principle; it shapes which apps are sensible candidates.</p>
+
+<h2 id="p5">5. Peers are the runtime</h2>
 <p>When a rootless app needs synchronous coordination — a cursor, a vote, a presence indicator — it asks the browsers in the room, not a server in a region. WebRTC handles transport; CRDTs handle merge; a small public signaling shim handles introductions.</p>
 <p>The signaling shim is the one place where rootless apps lean on shared infrastructure. This is acceptable because: (a) signaling is stateless and replaceable, (b) the data flowing through it is opaque and short-lived, and (c) for many use cases a QR code or copy-paste link is a sufficient signal channel.</p>
 <p><strong>Prior art:</strong> This descends directly from the WebRTC ecosystem, Yjs and Automerge, and the broader peer-to-peer web tradition. Rootless adds: peer coordination is not a feature, it is the default.</p>
 
-<h2 id="p5">5. Trust is proven, not asserted</h2>
+<h2 id="p6">6. Trust is proven, not asserted</h2>
 <p>In a rootless app, eligibility ("this voter is on the allowlist"), uniqueness ("this voter has not voted yet"), and authority ("this command came from a holder of role X") are demonstrated with cryptographic proofs that any other peer can verify locally.</p>
 <p>Zero-knowledge membership proofs (Semaphore-style) and nullifiers are the most common building blocks. The user produces a proof that they belong to a set baked into the artifact; the proof reveals nothing about <em>which</em> member they are, but exposes a unique nullifier that prevents double-action.</p>
 <p><strong>Concrete:</strong> <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">anon-conf-poll</a> proves "this ballot came from a member of the conference attendee list" without identifying which attendee. The nullifier guarantees one ballot per attendee. No server is involved in the verification.</p>
 
-<h2 id="p6">6. The user's machine is the database</h2>
+<h2 id="p7">7. The user's machine is the database</h2>
 <p>Persistence in a rootless app lives in the browser. IndexedDB and the Origin Private File System hold documents. DuckDB-WASM runs analytical queries against multi-gigabyte parquet files loaded over HTTP range requests. The File System Access API lets the user export to disk.</p>
 <p>This is liberating and lonely in equal measure. The user owns their data — but they also have to back it up themselves. A rootless app should make export trivial and import obvious.</p>
 
-<h2 id="p7">7. Physical space can carry state <em>(optional, advanced)</em></h2>
+<h2 id="p8">8. Physical space can carry state <em>(optional, advanced)</em></h2>
 <p>A subset of rootless apps — call them <em>situated</em> — use the physical world as part of their protocol. AprilTags, ArUco markers, or other fiducials let phones agree on geometry, identity, or order without consulting a server. The room becomes a coordination substrate.</p>
 <p>This is the most experimental principle. Many rootless apps will not use physical anchors. But the apps that do — group photo coordination, hands-free retro voting, mesh standup baton-passing — get capabilities that are otherwise impossible without a server.</p>
 
-<h2 id="p8">8. A rootless app must be forkable into existence on someone else's account in under five minutes</h2>
+<h2 id="p9">9. A rootless app must be forkable into existence on someone else's account in under five minutes</h2>
 <p>This is the operational test. Fork the repository, enable Pages on the fork, wait for the action to complete, open the URL — done. If standing up your own instance requires secrets in env vars, DNS configuration, paid service signups, or operator-only knowledge, the app is not rootless. It is a hosted app that happens to publish its source.</p>
 <p>The five-minute budget is not arbitrary. It is roughly the threshold below which a curious user will try it and above which they will not.</p>
 
-<h2 id="p9">9. Rootless does not mean trustless. It means uncoordinated</h2>
+<h2 id="p10">10. Rootless does not mean trustless. It means uncoordinated</h2>
 <p>This is the principle most likely to be misread. A rootless app may rely on trusted code (the artifact itself), trusted cryptography (the proofs), trusted hardware (the user's device), and trusted humans (the maintainers who keep the repo honest). What it does not rely on is a <em>trusted coordinator</em> — a single host whose continued cooperation is required for the app to function.</p>
 <p>Removing the coordinator is the design move. Removing trust altogether is a different project, with a much larger blast radius and a much harder threat model. Rootless is not crypto-libertarianism; it is the narrower, more practical observation that <em>most coordination did not actually need a coordinator.</em></p>
 
-<h2 id="p10">10. Progressive enhancement, not regressive purity</h2>
+<h2 id="p11">11. Progressive enhancement, not regressive purity</h2>
 <p>A rootless app may accept a server. It may benefit from one. It may even encourage you to run one. What it must not do is <em>require</em> one. The acid test: if every server affiliated with the app disappears overnight, does the app keep working with reduced features, or does it stop being an app?</p>
 <p>If reduced features: rootless. If stops being an app: hosted.</p>
 <p>The point of rootlessness is not to refuse infrastructure. It is to refuse <em>dependence</em> on infrastructure.</p>

@@ -14,6 +14,10 @@ The manifesto was written on day 12, while the build-in-public month was still i
 
 ## Changelog
 
+### v0.1.1 — 2026-05-12 (same-day correction)
+
+Added principle 4: *"The artifact carries compute, not just content."* The original v0.1 draft mentioned WASM only in passing under principles 3 and 6, but WASM is what separates rootless apps from plain static sites and from JAMstack — it deserves its own principle. Principles formerly numbered 4–10 are now 5–11. Example entries updated to reflect the renumbering, and WASM-heavy apps now list principle 4 and a `WASM` tag.
+
 ### v0.1 — 2026-05-12
 
 Initial publication.

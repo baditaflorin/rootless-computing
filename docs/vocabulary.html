@@ -101,10 +101,11 @@
     <tr><td><strong>Pages-Native</strong></td><td>Deployment axis — <em>where</em> the app lives.</td><td>Most rootless apps are Pages-Native, but a rootless app could also be distributed as an IPFS bundle or a downloadable zip.</td></tr>
     <tr><td><strong>Bake-Time Backend</strong></td><td>Resolution axis — <em>when</em> "server work" happens.</td><td>Most rootless apps use BTB because it eliminates the need for runtime APIs.</td></tr>
     <tr><td><strong>Mesh Apps / Situated Mesh</strong></td><td>Runtime topology with WebRTC + physical anchors.</td><td>A common runtime <em>for</em> rootless apps, especially situated ones.</td></tr>
+    <tr><td><strong>WASM (WebAssembly)</strong></td><td>Portable binary bytecode that runs in the browser at near-native speed.</td><td>The enabling technology for <a href="principles.html#p4">principle 4</a> — lets a rootless app ship a database engine, ZK prover, ML model, or media tool as a static file instead of a service.</td></tr>
   </tbody>
 </table>
 
-<p>A rootless app is typically Pages-Native, often uses a Bake-Time Backend, and frequently has a Mesh runtime — but none of those is required. Rootlessness is the principle; the others are implementation choices.</p>
+<p>A rootless app is typically Pages-Native, often uses a Bake-Time Backend, frequently has a Mesh runtime, and increasingly relies on WASM to ship native-class engines inside the artifact — but none of those is strictly required. Rootlessness is the principle; the others are implementation choices.</p>
 
 </article>
 </main>

@@ -23,6 +23,8 @@ keywords:
   - bake-time backend
   - mesh apps
   - zero-knowledge proofs
+  - webassembly
+  - wasm
 license: CC-BY-4.0
 repository-code: "https://github.com/baditaflorin/rootless-computing"
 url: "https://baditaflorin.github.io/rootless-computing/"

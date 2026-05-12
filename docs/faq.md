@@ -58,6 +58,12 @@ Because the existing terms are each pointing at one face of the thing.
 
 *Rootless computing* names the intersection. A rootless app is static-deployed, local-first in data, P2P in coordination, server-free in dependency, and decentralized in the older sense (no privileged coordinator). The single term lets people find each other.
 
+## Isn't shipping multi-megabyte WASM binaries to every visitor wasteful?
+
+It can be, and it is a real constraint on what makes sense as a rootless app. FFmpeg.wasm is around 25 MB; DuckDB-WASM is around 5 MB; a useful transformers.js model is tens to hundreds of MB. None of that is appropriate for a landing page.
+
+The honest framing: WASM is for apps where the user *intends* to do work that would otherwise have required a server. Someone visiting a video-transcoder rootless app expects a one-time download in exchange for never uploading their files. Someone running an in-browser SQL notebook expects the engine to load once and be cached on every subsequent visit. Browser caching, HTTP range requests, code-splitting, and incremental streaming mean the cold-load tax is paid once per device, not once per use. For workloads where that trade is wrong (one-shot interactions, public landing pages), use plain JavaScript or no script at all.
+
 ## What does this have to do with rootless containers?
 
 The name is borrowed deliberately. In containers, *rootless* means "runs without a privileged root daemon" — no `dockerd` running as root, no system-level coordinator required. The analogy is tight: rootless containers remove the privileged daemon; rootless apps remove the privileged server. In both cases the unprivileged version turns out to be enough for most real-world cases, and the privileged version was historical accident more than necessity.

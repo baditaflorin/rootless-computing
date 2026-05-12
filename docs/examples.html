@@ -31,7 +31,7 @@
 
 <p>Rootless apps in the wild. To add yours, see <a href="https://github.com/baditaflorin/rootless-computing/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a> or open an issue with the <a href="https://github.com/baditaflorin/rootless-computing/issues/new?template=submit-example.md" rel="noopener">submit-example</a> template.</p>
 
-<p>Each entry lists the principles it demonstrates (by number from the <a href="./">manifesto</a>) and the adjacent concepts it relies on (Pages-Native, BTB = Bake-Time Backend, Mesh, ZK, Fiducials).</p>
+<p>Each entry lists the principles it demonstrates (by number from the <a href="./">manifesto</a>) and the adjacent concepts it relies on (Pages-Native, BTB = Bake-Time Backend, Mesh, WASM, ZK, Fiducials).</p>
 
 <h2 id="confirmed">Confirmed entries</h2>
 
@@ -39,8 +39,8 @@
 <p>Static, anonymous live polling with CRDT sync, zk one-vote proofs, and local analytics.</p>
 <ul>
   <li>Repo: <a href="https://github.com/baditaflorin/anon-conf-poll" rel="noopener">github.com/baditaflorin/anon-conf-poll</a></li>
-  <li>Principles: 1, 2, 3, 4, 5, 6, 8, 9</li>
-  <li>Uses: Pages-Native, BTB, Mesh, ZK</li>
+  <li>Principles: 1, 2, 3, 4, 5, 6, 7, 9, 10</li>
+  <li>Uses: Pages-Native, BTB, Mesh, WASM, ZK</li>
 </ul>
 
 <h2 id="seed">Seed entries (May 2026 build-in-public month)</h2>
@@ -49,83 +49,83 @@
 
 <h3>mesh-pair-rotation</h3>
 <p>Pair-programming rotation manager. Suggests fresh pairs; driver-navigator role flip every 25 min.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-pair-rotation" rel="noopener">github.com/baditaflorin/mesh-pair-rotation</a></li><li>Principles: 1, 2, 3, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-pair-rotation" rel="noopener">github.com/baditaflorin/mesh-pair-rotation</a></li><li>Principles: 1, 2, 3, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-brain-write</h3>
 <p>Silent brainstorm. Type ideas privately on a timer; pooled anonymously. ArUco mode for paper ideas.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-brain-write" rel="noopener">github.com/baditaflorin/mesh-brain-write</a></li><li>Principles: 1, 2, 3, 4, 6, 7, 8</li><li>Uses: Pages-Native, Mesh, Fiducials</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-brain-write" rel="noopener">github.com/baditaflorin/mesh-brain-write</a></li><li>Principles: 1, 2, 3, 4, 5, 7, 8, 9</li><li>Uses: Pages-Native, Mesh, WASM, Fiducials</li></ul>
 
 <h3>mesh-lunch-roulette</h3>
 <p>Weekly coffee-chat pairing for teams. History-aware so no two people repeat until everyone has met.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-lunch-roulette" rel="noopener">github.com/baditaflorin/mesh-lunch-roulette</a></li><li>Principles: 1, 2, 3, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-lunch-roulette" rel="noopener">github.com/baditaflorin/mesh-lunch-roulette</a></li><li>Principles: 1, 2, 3, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-retro</h3>
 <p>Anonymous retro board. Mad/Sad/Glad + dot voting. ArUco mode for hands-free wall publish.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-retro" rel="noopener">github.com/baditaflorin/mesh-retro</a></li><li>Principles: 1, 2, 3, 4, 6, 7, 8</li><li>Uses: Pages-Native, Mesh, Fiducials</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-retro" rel="noopener">github.com/baditaflorin/mesh-retro</a></li><li>Principles: 1, 2, 3, 4, 5, 7, 8, 9</li><li>Uses: Pages-Native, Mesh, WASM, Fiducials</li></ul>
 
 <h3>mesh-trivia</h3>
 <p>Kahoot-style trivia. Mesh-time synchronized reveal; fair first-to-answer scoring.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-trivia" rel="noopener">github.com/baditaflorin/mesh-trivia</a></li><li>Principles: 1, 2, 3, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-trivia" rel="noopener">github.com/baditaflorin/mesh-trivia</a></li><li>Principles: 1, 2, 3, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-direction-finder</h3>
 <p>Site-specific compass-aligned panorama. Each phone shows its panorama slice only when pointed at the correct bearing.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-direction-finder" rel="noopener">github.com/baditaflorin/mesh-direction-finder</a></li><li>Principles: 1, 2, 3, 6, 7, 8</li><li>Uses: Pages-Native, BTB, Fiducials</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-direction-finder" rel="noopener">github.com/baditaflorin/mesh-direction-finder</a></li><li>Principles: 1, 2, 3, 7, 8, 9</li><li>Uses: Pages-Native, BTB, Fiducials</li></ul>
 
 <h3>mesh-pulse-photo</h3>
 <p>Group heart-rate biofeedback. Camera+flash reads your pulse; all phones glow at the room's average BPM.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-pulse-photo" rel="noopener">github.com/baditaflorin/mesh-pulse-photo</a></li><li>Principles: 1, 2, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-pulse-photo" rel="noopener">github.com/baditaflorin/mesh-pulse-photo</a></li><li>Principles: 1, 2, 4, 5, 7, 9</li><li>Uses: Pages-Native, Mesh, WASM</li></ul>
 
 <h3>mesh-light-paint</h3>
 <p>Synchronized phone-screen light painting. Long-exposure photo composites mesh-synced patterns.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-light-paint" rel="noopener">github.com/baditaflorin/mesh-light-paint</a></li><li>Principles: 1, 2, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-light-paint" rel="noopener">github.com/baditaflorin/mesh-light-paint</a></li><li>Principles: 1, 2, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-standup</h3>
 <p>Round-robin standup timer with ArUco baton-pass. Hold up your tag card to claim the floor.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-standup" rel="noopener">github.com/baditaflorin/mesh-standup</a></li><li>Principles: 1, 2, 4, 6, 7, 8</li><li>Uses: Pages-Native, Mesh, Fiducials</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-standup" rel="noopener">github.com/baditaflorin/mesh-standup</a></li><li>Principles: 1, 2, 4, 5, 7, 8, 9</li><li>Uses: Pages-Native, Mesh, WASM, Fiducials</li></ul>
 
 <h3>mesh-icebreaker</h3>
 <p>Curated icebreaker prompt decks with round-robin. Kickoffs, retros, year-end reviews, conflict resets.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-icebreaker" rel="noopener">github.com/baditaflorin/mesh-icebreaker</a></li><li>Principles: 1, 2, 3, 4, 6, 8</li><li>Uses: Pages-Native, BTB, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-icebreaker" rel="noopener">github.com/baditaflorin/mesh-icebreaker</a></li><li>Principles: 1, 2, 3, 5, 7, 9</li><li>Uses: Pages-Native, BTB, Mesh</li></ul>
 
 <h3>mesh-applause</h3>
 <p>Anonymous kudos wall. Send appreciations to teammates; reveal at standup.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-applause" rel="noopener">github.com/baditaflorin/mesh-applause</a></li><li>Principles: 1, 2, 4, 5, 6, 8</li><li>Uses: Pages-Native, Mesh, ZK</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-applause" rel="noopener">github.com/baditaflorin/mesh-applause</a></li><li>Principles: 1, 2, 4, 5, 6, 7, 9</li><li>Uses: Pages-Native, Mesh, WASM, ZK</li></ul>
 
 <h3>mesh-shadow-paint</h3>
 <p>Phones become colored fill lights. One phone is the camera; others show solid hues from different angles.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-shadow-paint" rel="noopener">github.com/baditaflorin/mesh-shadow-paint</a></li><li>Principles: 1, 2, 4, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-shadow-paint" rel="noopener">github.com/baditaflorin/mesh-shadow-paint</a></li><li>Principles: 1, 2, 5, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-quiet-quest</h3>
 <p>Gamified group silence. Mic-monitored quiet game; shared score ticks up while the room stays quiet.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-quiet-quest" rel="noopener">github.com/baditaflorin/mesh-quiet-quest</a></li><li>Principles: 1, 2, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-quiet-quest" rel="noopener">github.com/baditaflorin/mesh-quiet-quest</a></li><li>Principles: 1, 2, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-stretch-class</h3>
 <p>Group yoga / stretch class. Phones detect 'holding the pose' via accelerometer; instructor sees the aggregate.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-stretch-class" rel="noopener">github.com/baditaflorin/mesh-stretch-class</a></li><li>Principles: 1, 2, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-stretch-class" rel="noopener">github.com/baditaflorin/mesh-stretch-class</a></li><li>Principles: 1, 2, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-mood-check</h3>
 <p>Daily team mood barometer. Tap one of 5 face emojis; aggregate displayed instantly; never logged centrally.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-mood-check" rel="noopener">github.com/baditaflorin/mesh-mood-check</a></li><li>Principles: 1, 2, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-mood-check" rel="noopener">github.com/baditaflorin/mesh-mood-check</a></li><li>Principles: 1, 2, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-pomodoro-room</h3>
 <p>Group pomodoro. All phones run a mesh-time-synced 25/5 timer; signals for done-early or stuck.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-pomodoro-room" rel="noopener">github.com/baditaflorin/mesh-pomodoro-room</a></li><li>Principles: 1, 2, 4, 6, 8</li><li>Uses: Pages-Native, Mesh</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-pomodoro-room" rel="noopener">github.com/baditaflorin/mesh-pomodoro-room</a></li><li>Principles: 1, 2, 5, 7, 9</li><li>Uses: Pages-Native, Mesh</li></ul>
 
 <h3>mesh-skill-tree</h3>
 <p>Anonymous team skill radar. Self-rate 8–12 skills 1–4; team gets aggregate radar chart with no individual data.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-skill-tree" rel="noopener">github.com/baditaflorin/mesh-skill-tree</a></li><li>Principles: 1, 2, 4, 5, 6, 8</li><li>Uses: Pages-Native, Mesh, ZK</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-skill-tree" rel="noopener">github.com/baditaflorin/mesh-skill-tree</a></li><li>Principles: 1, 2, 4, 5, 6, 7, 9</li><li>Uses: Pages-Native, Mesh, WASM, ZK</li></ul>
 
 <h3>mesh-silent-vote</h3>
 <p>Ranked-choice or approval voting on a list of options.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-silent-vote" rel="noopener">github.com/baditaflorin/mesh-silent-vote</a></li><li>Principles: 1, 2, 4, 5, 6, 8</li><li>Uses: Pages-Native, Mesh, ZK</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-silent-vote" rel="noopener">github.com/baditaflorin/mesh-silent-vote</a></li><li>Principles: 1, 2, 4, 5, 6, 7, 9</li><li>Uses: Pages-Native, Mesh, WASM, ZK</li></ul>
 
 <h3>mesh-anonymous-qa</h3>
 <p>Audience submits questions anonymously, upvotes others. Replaces Slido / Mentimeter Q&amp;A.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-anonymous-qa" rel="noopener">github.com/baditaflorin/mesh-anonymous-qa</a></li><li>Principles: 1, 2, 4, 5, 6, 8</li><li>Uses: Pages-Native, Mesh, ZK</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/mesh-anonymous-qa" rel="noopener">github.com/baditaflorin/mesh-anonymous-qa</a></li><li>Principles: 1, 2, 4, 5, 6, 7, 9</li><li>Uses: Pages-Native, Mesh, WASM, ZK</li></ul>
 
 <h3>trust-no-one-anonymizer</h3>
 <p>Client-side face and voice anonymizer for private browser-based video calls.</p>
-<ul><li>Repo: <a href="https://github.com/baditaflorin/trust-no-one-anonymizer" rel="noopener">github.com/baditaflorin/trust-no-one-anonymizer</a></li><li>Principles: 1, 2, 6, 8</li><li>Uses: Pages-Native</li></ul>
+<ul><li>Repo: <a href="https://github.com/baditaflorin/trust-no-one-anonymizer" rel="noopener">github.com/baditaflorin/trust-no-one-anonymizer</a></li><li>Principles: 1, 2, 4, 7, 9</li><li>Uses: Pages-Native, WASM</li></ul>
 
 <h3>Pending — slots 21–31</h3>
 <p>Eleven slots remain to be filled by the conclusion of the May 2026 build month. Entries pending — see <a href="https://github.com/baditaflorin/rootless-computing/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a>.</p>
@@ -135,7 +135,7 @@
 &lt;one-line description&gt;
 - Repo: https://github.com/&lt;owner&gt;/&lt;repo&gt;
 - Principles: &lt;comma-separated principle numbers&gt;
-- Uses: &lt;Pages-Native, BTB, Mesh, ZK, Fiducials, IPFS, ...&gt;</code></pre>
+- Uses: &lt;Pages-Native, BTB, Mesh, WASM, ZK, Fiducials, IPFS, ...&gt;</code></pre>
 
 </article></main>
 

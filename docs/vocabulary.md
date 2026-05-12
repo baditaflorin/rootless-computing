@@ -82,5 +82,6 @@ The author of this manifesto has previously named several adjacent patterns. Roo
 | **Pages-Native** | Deployment axis — *where* the app lives (in a repo, served from Pages). | Most rootless apps are Pages-Native, but a rootless app could also be distributed as an IPFS bundle or a downloadable zip. |
 | **Bake-Time Backend (BTB)** | Resolution axis — *when* "server work" happens (at CI, not at request time). | Most rootless apps use BTB because it eliminates the need for runtime APIs. |
 | **Mesh Apps / Situated Mesh** | Runtime topology with WebRTC + physical anchors. | A common runtime *for* rootless apps, especially situated ones. |
+| **WASM (WebAssembly)** | Portable binary bytecode that runs in the browser at near-native speed. | The enabling technology for principle 4 — lets a rootless app ship a database engine, ZK prover, ML model, or media tool as a static file instead of a service. |
 
-A rootless app is typically Pages-Native, often uses a Bake-Time Backend, and frequently has a Mesh runtime — but none of those is required. Rootlessness is the principle; the others are implementation choices.
+A rootless app is typically Pages-Native, often uses a Bake-Time Backend, frequently has a Mesh runtime, and increasingly relies on WASM to ship native-class engines inside the artifact — but none of those is strictly required. Rootlessness is the principle; the others are implementation choices.
