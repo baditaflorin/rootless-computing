@@ -14,7 +14,7 @@ https://www.contributor-covenant.org/version/2/1/code_of_conduct/
 
 ## Reporting
 
-If you need to flag a concern about behavior in this project, open a private email thread with the maintainer at the address listed on https://badita.org. Reports are read by Florin only.
+If you need to flag a concern about behavior in this project, open a private email thread with the maintainer at the address listed on https://badita.lv3.org. Reports are read by Florin only.
 
 ## Scope
 

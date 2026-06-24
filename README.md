@@ -53,4 +53,4 @@ If you cite this work in a paper or talk, see [CITATION.cff](CITATION.cff).
 
 ---
 
-Coined by [Florin Bădiță (Vivi)](https://badita.org), May 2026, while shipping [anon-conf-poll](https://github.com/baditaflorin/anon-conf-poll).
+Coined by [Florin Bădiță (Vivi)](https://badita.lv3.org), May 2026, while shipping [anon-conf-poll](https://github.com/baditaflorin/anon-conf-poll).

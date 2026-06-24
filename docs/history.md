@@ -2,7 +2,7 @@
 
 ## Origin
 
-The term *rootless computing* was coined by [Florin Bădiță (Vivi)](https://badita.org) in May 2026, during a personal challenge to open-source one application per day for 31 days.
+The term *rootless computing* was coined by [Florin Bădiță (Vivi)](https://badita.lv3.org) in May 2026, during a personal challenge to open-source one application per day for 31 days.
 
 By around day 10 of that month, the apps shipped — a mix of mesh tools for teams (anonymous polls, retro boards, pomodoro rooms, standup batons), situated apps using AprilTag fiducials, and the immediate predecessor [anon-conf-poll](https://github.com/baditaflorin/anon-conf-poll) — had developed a recognizable shape that the available vocabulary failed to capture cleanly.
 
