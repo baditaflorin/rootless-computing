@@ -66,6 +66,16 @@ It is not **JAMstack**. JAMstack is a build-and-deploy pattern that produces sta
 
 It is not **just a static site**. Static sites are the ancestor. A rootless app inherits the static site's deployment story and adds browser-resident compute, peer coordination, cryptographic eligibility, and optional physical-world anchoring on top.
 
+## Demos and Real-World Usage
+
+The rootless computing paradigm is actively demonstrated by a fleet of over 130 peer-to-peer browser applications. 
+
+You can:
+- Browse and run all of them from the interactive **[Mesh Fleet Demos running page](https://baditaflorin.github.io/mesh-common/demos/)**.
+- See the full **[Categorized List of Demos](docs/demos.md)** inside this repository, grouped by feature and use-case (Collaboration, Voting, Games, Social, Sensors, etc.).
+
+These apps use the shared [mesh-common running page](https://baditaflorin.github.io/mesh-common/) as their runtime scaffold, combining WebRTC, Yjs, and client-side cryptography to implement zero-server coordination.
+
 ## Invitation
 
 This document is version 0.1. It is wrong in places I cannot yet see. If you have built something that fits this shape, please add it to [examples](docs/examples.md). If you think a principle is redundant, weak, or missing, open an issue and argue for the change. If you want to fork the manifesto entirely and run a competing definition, that is also fine — the manifesto is itself a rootless artifact, and there is no canonical instance.
