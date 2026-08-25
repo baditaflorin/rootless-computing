@@ -5,9 +5,9 @@ Rootless apps in the wild. This list is the canonical index. To add yours, see [
 Each entry includes which principles it demonstrates (by number from the [manifesto](../MANIFESTO.md)) and which adjacent concepts it relies on (Pages-Native, BTB = Bake-Time Backend, Mesh, WASM, ZK, Fiducials).
 
 > [!NOTE]
-> There is a fleet of **134 live P2P demos** built using the rootless computing paradigm and the shared `mesh-common` framework. 
+> There is a growing fleet of **live P2P demos** built using the rootless computing paradigm and the shared `mesh-common` framework.
 > - View the **[live interactive running dashboard](https://baditaflorin.github.io/mesh-common/demos/)** to run the apps.
-> - Browse the **[categorized index of 134 demos](demos.md)** grouped by collaboration tools, voting systems, games, social networks, and physical sensor utilities.
+> - Browse the **[live categorized directory](demos.md)**, which reads the shared Mesh catalog rather than a hand-maintained list.
 
 ## Confirmed entries
 

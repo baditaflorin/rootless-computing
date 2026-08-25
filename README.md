@@ -25,7 +25,7 @@ This repository is the canonical home for the term: the manifesto, the vocabular
 - [Principles, expanded](docs/principles.md) — each principle with rationale and prior art
 - [FAQ](docs/faq.md) — including the sharp comparisons to web3, JAMstack, and local-first
 - [Adjacent work](docs/adjacent-work.md) — who came before, and what is genuinely new
-- [Examples](docs/examples.md) — rootless apps in the wild (including our **[categorized index of 134 demos](docs/demos.md)** and the **[live running demos page](https://baditaflorin.github.io/mesh-common/demos/)**)
+- [Examples](docs/examples.md) — rootless apps in the wild (including the **[live Mesh demo directory](docs/demos.md)** and the **[recording dashboard](https://baditaflorin.github.io/mesh-common/demos/)**)
 - [History](docs/history.md) — origin story and dated changelog
 
 ## Badge

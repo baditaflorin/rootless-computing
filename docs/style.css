@@ -333,6 +333,84 @@ th {
   background: var(--bg-elev);
 }
 
+/* Live Mesh demo directory */
+.demos-page {
+  max-width: var(--max-wide);
+  padding-bottom: 4rem;
+}
+.demos-hero {
+  padding: 56px 0 30px;
+  border-bottom: 1px solid var(--rule);
+}
+.demos-hero h1 {
+  max-width: 14ch;
+  margin: 0 0 16px;
+  font-size: clamp(2.35rem, 6vw, 4.3rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+.demos-hero .lede { margin-bottom: .8em; }
+.demo-browser {
+  margin: 30px 0 34px;
+  padding: 22px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--bg-elev);
+}
+.demo-browser-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.demo-browser-head h2 { margin: 0 0 4px; font-size: 1.35rem; }
+.demo-browser-head p { margin: 0; color: var(--fg-dim); font-size: .92em; }
+.demo-controls {
+  display: grid;
+  grid-template-columns: 1.35fr repeat(2, minmax(0, .85fr));
+  gap: 12px;
+}
+.demo-controls label { display: grid; gap: 5px; color: var(--fg-dim); font-size: .78em; font-weight: 650; letter-spacing: .03em; }
+.demo-controls input,
+.demo-controls select {
+  min-width: 0;
+  min-height: 42px;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  padding: 8px 10px;
+  color: var(--fg);
+  background: var(--bg);
+  font: inherit;
+}
+.demo-controls input:focus,
+.demo-controls select:focus { outline: 3px solid color-mix(in srgb, var(--accent), transparent 72%); border-color: var(--accent); }
+.demo-resultbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 28px; margin-top: 17px; }
+.demo-resultbar p { margin: 0; color: var(--fg-dim); font-size: .9em; }
+.text-button { border: 0; padding: 4px; color: var(--link); background: transparent; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.text-button:hover { color: var(--link-hover); }
+.demo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.demo-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid var(--rule); border-radius: 10px; background: var(--bg-elev); }
+.demo-preview { position: relative; display: block; aspect-ratio: 1.52 / 1; overflow: hidden; color: #fff; background: var(--code-bg); text-decoration: none; }
+.demo-preview img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .2s ease; }
+.demo-preview span { position: absolute; right: 10px; bottom: 10px; padding: 4px 8px; border-radius: 4px; color: #fff; background: #0d0f12d9; font-size: .72em; font-weight: 650; }
+.demo-preview:hover img, .demo-preview:focus img { transform: scale(1.025); }
+.demo-card-body { display: flex; min-height: 0; flex: 1; flex-direction: column; align-items: flex-start; padding: 15px; }
+.demo-card h3 { margin: 0 0 7px; font-size: 1.05rem; line-height: 1.25; }
+.demo-card h3 a { color: var(--fg); text-decoration: none; }
+.demo-card h3 a:hover { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+.demo-card-body > p { margin: 0 0 12px; color: var(--fg-dim); font-size: .84em; line-height: 1.5; }
+.demo-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+.demo-tags span { border: 1px solid var(--rule); border-radius: 999px; padding: 2px 7px; color: var(--fg-dim); font-size: .67em; line-height: 1.4; }
+.demo-tags span:first-child { border-color: color-mix(in srgb, var(--accent), transparent 40%); color: var(--accent); }
+.demo-source { margin-top: auto; font-size: .8em; }
+.demo-empty, .demo-error { margin: 2em 0; color: var(--fg-dim); }
+.demo-empty { grid-column: 1 / -1; }
+
+@media (max-width: 860px) {
+  .demo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* Print */
 @media print {
   :root { --bg: #fff; --fg: #111; --fg-dim: #444; --rule: #ccc; --bg-elev: #fff; --code-bg: #f4f4f4; --accent: #444; }
@@ -353,4 +431,9 @@ th {
   #theme-toggle { margin-left: auto; }
   .hero { padding: 36px 0 24px; }
   .principles > li { padding-left: 48px; }
+  .demos-hero { padding-top: 36px; }
+  .demo-browser { margin-inline: -6px; padding: 16px; }
+  .demo-browser-head { flex-direction: column; }
+  .demo-controls { grid-template-columns: 1fr; }
+  .demo-grid { grid-template-columns: 1fr; gap: 14px; }
 }
