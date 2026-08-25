@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Demos — Rootless Computing</title>
-<meta name="description" content="Categorized list of 134 peer-to-peer browser applications built using rootless computing.">
+<title>Mesh demos — Rootless Computing</title>
+<meta name="description" content="The live directory of recorded peer-to-peer Mesh applications built with rootless computing.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to demos</a>
 <header class="site-header"><div class="wrap">
   <a class="brand" href="./"><span class="mark" aria-hidden="true">✦</span><span class="brand-text">Rootless Computing</span></a>
   <nav class="site-nav" aria-label="Primary">
@@ -26,184 +26,125 @@
   <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode">◐</button>
 </div></header>
 
-<main id="main" class="wrap"><article>
-<h1>Interactive Demos</h1>
-<p>There is a fleet of <strong>134 live P2P demos</strong> built using the rootless computing paradigm and the shared <code>mesh-common</code> framework. 
-Each application has no origin server, runs entirely in the browser, stores data locally on your machine, and coordinates directly with peers using WebRTC/Yjs.</p>
+<main id="main" class="wrap demos-page">
+  <section class="demos-hero" aria-labelledby="demos-title">
+    <p class="eyebrow">The Mesh fleet</p>
+    <h1 id="demos-title">Live peer-to-peer demos</h1>
+    <p class="lede">A live directory of browser-local tools for games, coordination, creative play, devices, and small groups. Every entry is a recorded two-peer Mesh app.</p>
+    <p class="meta">This page reads the <a href="https://baditaflorin.github.io/mesh-common/demos/catalog.json">public Mesh demo catalog JSON</a> at runtime—one shared source of truth for this site and any other consumer.</p>
+  </section>
 
-<blockquote>
-  <p>💡 You can also browse the <strong><a href="https://baditaflorin.github.io/mesh-common/demos/" target="_blank" rel="noopener">live interactive running dashboard</a></strong> to see side-by-side recordings and status information for every demo.</p>
-</blockquote>
+  <section class="demo-browser" aria-label="Browse Mesh demos">
+    <div class="demo-browser-head">
+      <div>
+        <h2>Find a starting point</h2>
+        <p>Search by name or narrow the live catalog by category and use case.</p>
+      </div>
+      <a class="btn ghost" href="https://baditaflorin.github.io/mesh-common/demos/" target="_blank" rel="noopener">Open recording dashboard ↗</a>
+    </div>
+    <div class="demo-controls" role="search">
+      <label><span>Search</span><input id="demo-search" type="search" placeholder="Try “bingo”, “photo”, or “planning”" autocomplete="off"></label>
+      <label><span>Category</span><select id="demo-category"><option value="">All categories</option></select></label>
+      <label><span>Use case</span><select id="demo-usecase"><option value="">All use cases</option></select></label>
+    </div>
+    <div class="demo-resultbar">
+      <p id="demo-status" role="status" aria-live="polite">Loading the live catalog…</p>
+      <button id="demo-reset" class="text-button" type="button" hidden>Clear filters</button>
+    </div>
+  </section>
 
-<h2 id="collaboration-team-tools">Collaboration & Team Tools</h2>
-<ul>
-  <li><strong>Mesh Brain Write</strong> — <a href="https://baditaflorin.github.io/mesh-brain-write/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-brain-write" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Bus Factor</strong> — <a href="https://baditaflorin.github.io/mesh-bus-factor/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-bus-factor" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Clipboard Bridge</strong> — <a href="https://baditaflorin.github.io/mesh-clipboard-bridge/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-clipboard-bridge" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Debate Clock</strong> — <a href="https://baditaflorin.github.io/mesh-debate-clock/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-debate-clock" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Link Share</strong> — <a href="https://baditaflorin.github.io/mesh-link-share/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-link-share" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Meeting Cost</strong> — <a href="https://baditaflorin.github.io/mesh-meeting-cost/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-meeting-cost" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Mind Meld</strong> — <a href="https://baditaflorin.github.io/mesh-mind-meld/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-mind-meld" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Pair Rotation</strong> — <a href="https://baditaflorin.github.io/mesh-pair-rotation/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-pair-rotation" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Pomodoro Room</strong> — <a href="https://baditaflorin.github.io/mesh-pomodoro-room/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-pomodoro-room" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Retro</strong> — <a href="https://baditaflorin.github.io/mesh-retro/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-retro" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Shared Timer</strong> — <a href="https://baditaflorin.github.io/mesh-shared-timer/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-shared-timer" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Shared Window</strong> — <a href="https://baditaflorin.github.io/mesh-shared-window/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-shared-window" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Standup</strong> — <a href="https://baditaflorin.github.io/mesh-standup/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-standup" target="_blank" rel="noopener">Source Code</a></li>
-</ul>
-
-<h2 id="voting-decision-making">Voting & Decision Making</h2>
-<ul>
-  <li><strong>Mesh Anonymous Q&A</strong> — <a href="https://baditaflorin.github.io/mesh-anonymous-qa/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-anonymous-qa" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Applause Bracket</strong> — <a href="https://baditaflorin.github.io/mesh-applause-bracket/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-applause-bracket" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Bracket</strong> — <a href="https://baditaflorin.github.io/mesh-bracket/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-bracket" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Buzzer</strong> — <a href="https://baditaflorin.github.io/mesh-buzzer/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-buzzer" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Fist Of Five</strong> — <a href="https://baditaflorin.github.io/mesh-fist-of-five/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-fist-of-five" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Live Poll</strong> — <a href="https://baditaflorin.github.io/mesh-live-poll/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-live-poll" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Petition</strong> — <a href="https://baditaflorin.github.io/mesh-petition/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-petition" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Prediction Pool</strong> — <a href="https://baditaflorin.github.io/mesh-prediction-pool/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-prediction-pool" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Ranked Vote</strong> — <a href="https://baditaflorin.github.io/mesh-ranked-vote/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-ranked-vote" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Secret Ballot</strong> — <a href="https://baditaflorin.github.io/mesh-secret-ballot/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-secret-ballot" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Show Of Hands</strong> — <a href="https://baditaflorin.github.io/mesh-show-of-hands/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-show-of-hands" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Silent Vote</strong> — <a href="https://baditaflorin.github.io/mesh-silent-vote/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-silent-vote" target="_blank" rel="noopener">Source Code</a></li>
-</ul>
-
-<h2 id="games-interactive-play">Games & Interactive Play</h2>
-<ul>
-  <li><strong>Mesh 2 Truths 1 Lie</strong> — <a href="https://baditaflorin.github.io/mesh-2-truths-1-lie/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-2-truths-1-lie" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Dare Wheel</strong> — <a href="https://baditaflorin.github.io/mesh-dare-wheel/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-dare-wheel" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Exquisite Corpse</strong> — <a href="https://baditaflorin.github.io/mesh-exquisite-corpse/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-exquisite-corpse" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Finger Relay</strong> — <a href="https://baditaflorin.github.io/mesh-finger-relay/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-finger-relay" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Flash Mob</strong> — <a href="https://baditaflorin.github.io/mesh-flash-mob/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-flash-mob" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Fortune Cookie</strong> — <a href="https://baditaflorin.github.io/mesh-fortune-cookie/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-fortune-cookie" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Hot Potato</strong> — <a href="https://baditaflorin.github.io/mesh-hot-potato/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-hot-potato" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Icebreaker</strong> — <a href="https://baditaflorin.github.io/mesh-icebreaker/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-icebreaker" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Icebreaker Bingo</strong> — <a href="https://baditaflorin.github.io/mesh-icebreaker-bingo/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-icebreaker-bingo" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Jellybean</strong> — <a href="https://baditaflorin.github.io/mesh-jellybean/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-jellybean" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Laser Tag</strong> — <a href="https://baditaflorin.github.io/mesh-laser-tag/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-laser-tag" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Mad Libs</strong> — <a href="https://baditaflorin.github.io/mesh-mad-libs/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-mad-libs" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Mafia</strong> — <a href="https://baditaflorin.github.io/mesh-mafia/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-mafia" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Meme Quote</strong> — <a href="https://baditaflorin.github.io/mesh-meme-quote/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-meme-quote" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Mic Drop Quiz</strong> — <a href="https://baditaflorin.github.io/mesh-mic-drop-quiz/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-mic-drop-quiz" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Name Game</strong> — <a href="https://baditaflorin.github.io/mesh-name-game/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-name-game" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Never Have I</strong> — <a href="https://baditaflorin.github.io/mesh-never-have-i/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-never-have-i" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Overrated Underrated</strong> — <a href="https://baditaflorin.github.io/mesh-overrated-underrated/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-overrated-underrated" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Pictionary</strong> — <a href="https://baditaflorin.github.io/mesh-pictionary/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-pictionary" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Pitch Pong</strong> — <a href="https://baditaflorin.github.io/mesh-pitch-pong/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-pitch-pong" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Pyramid</strong> — <a href="https://baditaflorin.github.io/mesh-pyramid/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-pyramid" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Qr Snake</strong> — <a href="https://baditaflorin.github.io/mesh-qr-snake/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-qr-snake" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Questions Only</strong> — <a href="https://baditaflorin.github.io/mesh-questions-only/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-questions-only" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh RPS Arena</strong> — <a href="https://baditaflorin.github.io/mesh-rps-arena/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-rps-arena" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Shower Thoughts</strong> — <a href="https://baditaflorin.github.io/mesh-shower-thoughts/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-shower-thoughts" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Six Degrees</strong> — <a href="https://baditaflorin.github.io/mesh-six-degrees/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-six-degrees" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Snap</strong> — <a href="https://baditaflorin.github.io/mesh-snap/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-snap" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Snowball</strong> — <a href="https://baditaflorin.github.io/mesh-snowball/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-snowball" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Spyfall</strong> — <a href="https://baditaflorin.github.io/mesh-spyfall/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-spyfall" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Storyworm</strong> — <a href="https://baditaflorin.github.io/mesh-storyworm/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-storyworm" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Tag</strong> — <a href="https://baditaflorin.github.io/mesh-tag/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-tag" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Takes Blitz</strong> — <a href="https://baditaflorin.github.io/mesh-takes-blitz/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-takes-blitz" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Tic Tac Toe</strong> — <a href="https://baditaflorin.github.io/mesh-tic-tac-toe/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-tic-tac-toe" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Treasure Hunt</strong> — <a href="https://baditaflorin.github.io/mesh-treasure-hunt/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-treasure-hunt" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Trivia</strong> — <a href="https://baditaflorin.github.io/mesh-trivia/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-trivia" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Truth Bomb</strong> — <a href="https://baditaflorin.github.io/mesh-truth-bomb/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-truth-bomb" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Tug Of War</strong> — <a href="https://baditaflorin.github.io/mesh-tug-of-war/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-tug-of-war" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Werewolf Roles</strong> — <a href="https://baditaflorin.github.io/mesh-werewolf-roles/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-werewolf-roles" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Would Rather</strong> — <a href="https://baditaflorin.github.io/mesh-would-rather/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-would-rather" target="_blank" rel="noopener">Source Code</a></li>
-</ul>
-
-<h2 id="social-networking">Social & Networking</h2>
-<ul>
-  <li><strong>Mesh Blind Date</strong> — <a href="https://baditaflorin.github.io/mesh-blind-date/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-blind-date" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Business Card</strong> — <a href="https://baditaflorin.github.io/mesh-business-card/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-business-card" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Carpool Bingo</strong> — <a href="https://baditaflorin.github.io/mesh-carpool-bingo/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-carpool-bingo" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Compliment Roulette</strong> — <a href="https://baditaflorin.github.io/mesh-compliment-roulette/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-compliment-roulette" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Conversation Cards</strong> — <a href="https://baditaflorin.github.io/mesh-conversation-cards/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-conversation-cards" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Fundraiser Bar</strong> — <a href="https://baditaflorin.github.io/mesh-fundraiser-bar/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-fundraiser-bar" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Handshake Chain</strong> — <a href="https://baditaflorin.github.io/mesh-handshake-chain/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-handshake-chain" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Lunch Roulette</strong> — <a href="https://baditaflorin.github.io/mesh-lunch-roulette/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-lunch-roulette" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Mood Check</strong> — <a href="https://baditaflorin.github.io/mesh-mood-check/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-mood-check" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Mood Ring</strong> — <a href="https://baditaflorin.github.io/mesh-mood-ring/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-mood-ring" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Network Builder</strong> — <a href="https://baditaflorin.github.io/mesh-network-builder/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-network-builder" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh New Year</strong> — <a href="https://baditaflorin.github.io/mesh-new-year/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-new-year" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Passport</strong> — <a href="https://baditaflorin.github.io/mesh-passport/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-passport" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Potluck</strong> — <a href="https://baditaflorin.github.io/mesh-potluck/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-potluck" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Roast Or Toast</strong> — <a href="https://baditaflorin.github.io/mesh-roast-or-toast/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-roast-or-toast" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Rsvp</strong> — <a href="https://baditaflorin.github.io/mesh-rsvp/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-rsvp" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Skill Swap</strong> — <a href="https://baditaflorin.github.io/mesh-skill-swap/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-skill-swap" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Skill Tree</strong> — <a href="https://baditaflorin.github.io/mesh-skill-tree/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-skill-tree" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Thank You Token</strong> — <a href="https://baditaflorin.github.io/mesh-thank-you-token/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-thank-you-token" target="_blank" rel="noopener">Source Code</a></li>
-</ul>
-
-<h2 id="utilities-productivity">Utilities & Productivity</h2>
-<ul>
-  <li><strong>Mesh 2FA Bridge</strong> — <a href="https://baditaflorin.github.io/mesh-2fa-bridge/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-2fa-bridge" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Allowance</strong> — <a href="https://baditaflorin.github.io/mesh-allowance/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-allowance" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Attendance</strong> — <a href="https://baditaflorin.github.io/mesh-attendance/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-attendance" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Attendance Stamp</strong> — <a href="https://baditaflorin.github.io/mesh-attendance-stamp/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-attendance-stamp" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Bench Archive</strong> — <a href="https://baditaflorin.github.io/mesh-bench-archive/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-bench-archive" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Chore Rotation</strong> — <a href="https://baditaflorin.github.io/mesh-chore-rotation/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-chore-rotation" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Class Checkin</strong> — <a href="https://baditaflorin.github.io/mesh-class-checkin/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-class-checkin" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Favor Bank</strong> — <a href="https://baditaflorin.github.io/mesh-favor-bank/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-favor-bank" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Find My Family</strong> — <a href="https://baditaflorin.github.io/mesh-find-my-family/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-find-my-family" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Kiosk Wall</strong> — <a href="https://baditaflorin.github.io/mesh-kiosk-wall/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-kiosk-wall" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Route Share</strong> — <a href="https://baditaflorin.github.io/mesh-route-share/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-route-share" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Split The Bill</strong> — <a href="https://baditaflorin.github.io/mesh-split-the-bill/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-split-the-bill" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Volunteer Shift</strong> — <a href="https://baditaflorin.github.io/mesh-volunteer-shift/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-volunteer-shift" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh When2meet</strong> — <a href="https://baditaflorin.github.io/mesh-when2meet/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-when2meet" target="_blank" rel="noopener">Source Code</a></li>
-</ul>
-
-<h2 id="sensors-physical-media-interaction">Sensors & Physical/Media Interaction</h2>
-<ul>
-  <li><strong>Mesh Applause</strong> — <a href="https://baditaflorin.github.io/mesh-applause/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-applause" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Clap Track</strong> — <a href="https://baditaflorin.github.io/mesh-clap-track/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-clap-track" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Direction Finder</strong> — <a href="https://baditaflorin.github.io/mesh-direction-finder/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-direction-finder" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Dj Deck</strong> — <a href="https://baditaflorin.github.io/mesh-dj-deck/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-dj-deck" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Doorbell</strong> — <a href="https://baditaflorin.github.io/mesh-doorbell/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-doorbell" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Emoji Rain</strong> — <a href="https://baditaflorin.github.io/mesh-emoji-rain/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-emoji-rain" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Energy Curve</strong> — <a href="https://baditaflorin.github.io/mesh-energy-curve/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-energy-curve" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Eye Contact</strong> — <a href="https://baditaflorin.github.io/mesh-eye-contact/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-eye-contact" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Face Grid</strong> — <a href="https://baditaflorin.github.io/mesh-face-grid/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-face-grid" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Firefly Walk</strong> — <a href="https://baditaflorin.github.io/mesh-firefly-walk/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-firefly-walk" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Light Paint</strong> — <a href="https://baditaflorin.github.io/mesh-light-paint/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-light-paint" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Lightning Flash</strong> — <a href="https://baditaflorin.github.io/mesh-lightning-flash/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-lightning-flash" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Metronome</strong> — <a href="https://baditaflorin.github.io/mesh-metronome/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-metronome" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Mirror</strong> — <a href="https://baditaflorin.github.io/mesh-mirror/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-mirror" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Orientation Mosaic</strong> — <a href="https://baditaflorin.github.io/mesh-orientation-mosaic/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-orientation-mosaic" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Pulse Photo</strong> — <a href="https://baditaflorin.github.io/mesh-pulse-photo/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-pulse-photo" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Quiet Cheer</strong> — <a href="https://baditaflorin.github.io/mesh-quiet-cheer/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-quiet-cheer" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Quiet Quest</strong> — <a href="https://baditaflorin.github.io/mesh-quiet-quest/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-quiet-quest" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Room Soundtrack</strong> — <a href="https://baditaflorin.github.io/mesh-room-soundtrack/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-room-soundtrack" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Shadow Paint</strong> — <a href="https://baditaflorin.github.io/mesh-shadow-paint/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-shadow-paint" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Shake Dice</strong> — <a href="https://baditaflorin.github.io/mesh-shake-dice/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-shake-dice" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Shhh Meter</strong> — <a href="https://baditaflorin.github.io/mesh-shhh-meter/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-shhh-meter" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Silence Counter</strong> — <a href="https://baditaflorin.github.io/mesh-silence-counter/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-silence-counter" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Spotlight</strong> — <a href="https://baditaflorin.github.io/mesh-spotlight/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-spotlight" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Step Circle</strong> — <a href="https://baditaflorin.github.io/mesh-step-circle/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-step-circle" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Step Relay</strong> — <a href="https://baditaflorin.github.io/mesh-step-relay/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-step-relay" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Stretch Class</strong> — <a href="https://baditaflorin.github.io/mesh-stretch-class/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-stretch-class" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Tap Symphony</strong> — <a href="https://baditaflorin.github.io/mesh-tap-symphony/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-tap-symphony" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Tide Pool</strong> — <a href="https://baditaflorin.github.io/mesh-tide-pool/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-tide-pool" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Tilt Marble</strong> — <a href="https://baditaflorin.github.io/mesh-tilt-marble/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-tilt-marble" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Time Capsule</strong> — <a href="https://baditaflorin.github.io/mesh-time-capsule/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-time-capsule" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Toast Stack</strong> — <a href="https://baditaflorin.github.io/mesh-toast-stack/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-toast-stack" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Trade Cards</strong> — <a href="https://baditaflorin.github.io/mesh-trade-cards/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-trade-cards" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Tremor Map</strong> — <a href="https://baditaflorin.github.io/mesh-tremor-map/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-tremor-map" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Vibe Check</strong> — <a href="https://baditaflorin.github.io/mesh-vibe-check/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-vibe-check" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Watch Party Sync</strong> — <a href="https://baditaflorin.github.io/mesh-watch-party-sync/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-watch-party-sync" target="_blank" rel="noopener">Source Code</a></li>
-  <li><strong>Mesh Wave Canvas</strong> — <a href="https://baditaflorin.github.io/mesh-wave-canvas/" target="_blank" rel="noopener">Run App</a> | <a href="https://github.com/baditaflorin/mesh-wave-canvas" target="_blank" rel="noopener">Source Code</a></li>
-</ul>
-
-
-</article></main>
-
-<footer class="site-footer"><div class="wrap">
-  <p><span class="mark" aria-hidden="true">✦</span> Rootless Computing &middot; v0.1 &middot; 2026-05-12</p>
-  <p>Prose under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">CC BY 4.0</a>. Code under <a href="https://opensource.org/license/mit/" rel="license noopener">MIT</a>.</p>
-  <p><a href="https://github.com/baditaflorin/rootless-computing" rel="noopener">Source on GitHub</a> &middot; <a href="https://badita.lv3.org" rel="author noopener">Author</a></p>
-</div></footer>
+  <section id="demo-grid" class="demo-grid" aria-label="Mesh demo results" aria-busy="true"></section>
+  <p id="demo-error" class="demo-error" hidden></p>
+  <noscript><p class="demo-error">This directory needs JavaScript to load the shared Mesh catalog. You can browse the <a href="https://baditaflorin.github.io/mesh-common/demos/">recording dashboard</a> instead.</p></noscript>
+</main>
 
 <script>
-(function(){var k='rc-theme',r=document.documentElement,s=null;try{s=localStorage.getItem(k)}catch(e){}if(s==='light'||s==='dark')r.setAttribute('data-theme',s);var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var c=r.getAttribute('data-theme');if(!c){var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches;c=p?'light':'dark'}var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}});})();
+(() => {
+  const catalogUrl = "https://baditaflorin.github.io/mesh-common/demos/catalog.json";
+  const grid = document.querySelector("#demo-grid");
+  const status = document.querySelector("#demo-status");
+  const error = document.querySelector("#demo-error");
+  const search = document.querySelector("#demo-search");
+  const category = document.querySelector("#demo-category");
+  const usecase = document.querySelector("#demo-usecase");
+  const reset = document.querySelector("#demo-reset");
+  let demos = [];
+
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+  const optionValues = (values) => [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+
+  function fillFilters() {
+    for (const value of optionValues(demos.map((demo) => demo.category))) category.add(new Option(value, value));
+    for (const value of optionValues(demos.flatMap((demo) => demo.useCases || []))) usecase.add(new Option(value, value));
+  }
+
+  function card(demo) {
+    const description = demo.description ? `<p>${escapeHtml(demo.description)}</p>` : "";
+    const preview = demo.previewUrl ? `<img src="${escapeHtml(demo.previewUrl)}" alt="" loading="lazy">` : "";
+    const tags = [demo.category, demo.subcategory, ...(demo.useCases || []).slice(0, 3)]
+      .filter(Boolean)
+      .map((tag) => `<span>${escapeHtml(tag)}</span>`)
+      .join("");
+    return `<article class="demo-card">
+      <a class="demo-preview" href="${escapeHtml(demo.liveUrl)}" target="_blank" rel="noopener" aria-label="Open ${escapeHtml(demo.name)}">${preview}<span>Run demo ↗</span></a>
+      <div class="demo-card-body">
+        <h3><a href="${escapeHtml(demo.liveUrl)}" target="_blank" rel="noopener">${escapeHtml(demo.name)} <span aria-hidden="true">↗</span></a></h3>
+        ${description}
+        <div class="demo-tags">${tags}</div>
+        <a class="demo-source" href="${escapeHtml(demo.sourceUrl)}" target="_blank" rel="noopener">Source code</a>
+      </div>
+    </article>`;
+  }
+
+  function render() {
+    const query = search.value.trim().toLowerCase();
+    const selectedCategory = category.value;
+    const selectedUseCase = usecase.value;
+    const visible = demos.filter((demo) => {
+      const searchable = [demo.name, demo.id, demo.description, demo.category, demo.subcategory, ...(demo.useCases || [])].join(" ").toLowerCase();
+      return (!query || searchable.includes(query))
+        && (!selectedCategory || demo.category === selectedCategory)
+        && (!selectedUseCase || (demo.useCases || []).includes(selectedUseCase));
+    });
+    grid.innerHTML = visible.map(card).join("");
+    grid.setAttribute("aria-busy", "false");
+    status.textContent = visible.length === 1 ? "Showing 1 live demo" : `Showing ${visible.length} live demos`;
+    reset.hidden = !(query || selectedCategory || selectedUseCase);
+    if (!visible.length) grid.innerHTML = '<p class="demo-empty">No demos match those filters. Try clearing one.</p>';
+  }
+
+  async function load() {
+    try {
+      const response = await fetch(catalogUrl, { cache: "no-cache" });
+      if (!response.ok) throw new Error(`Catalog returned ${response.status}`);
+      const data = await response.json();
+      if (data.schemaVersion !== 1 || !Array.isArray(data.demos)) throw new Error("Catalog format is not supported");
+      demos = data.demos.filter((demo) => demo.status === "ok");
+      fillFilters();
+      render();
+    } catch (cause) {
+      grid.setAttribute("aria-busy", "false");
+      status.textContent = "The demo catalog is unavailable right now.";
+      error.hidden = false;
+      error.textContent = "Try the recording dashboard, then return here once the catalog is available.";
+    }
+  }
+
+  search.addEventListener("input", render);
+  category.addEventListener("change", render);
+  usecase.addEventListener("change", render);
+  reset.addEventListener("click", () => {
+    search.value = "";
+    category.value = "";
+    usecase.value = "";
+    render();
+    search.focus();
+  });
+  load();
+})();
+</script>
+<script>
+(() => { const button = document.getElementById("theme-toggle"); const key = "rootless-theme"; const saved = localStorage.getItem(key); if (saved) document.documentElement.dataset.theme = saved; button.addEventListener("click", () => { const current = document.documentElement.dataset.theme === "light" ? "dark" : "light"; document.documentElement.dataset.theme = current; localStorage.setItem(key, current); }); })();
 </script>
 </body>
 </html>
